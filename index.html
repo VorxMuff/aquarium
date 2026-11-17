@@ -17,7 +17,6 @@
     --panel: #fff8fb;
     --plum: #3b1730;
     --pink: #ff699e;
-    --pink-dark: #d93870;
     --pink-soft: #ffd6e6;
     --cream: #ffffff;
   }
@@ -33,7 +32,6 @@
     flex-direction: column;
   }
 
-  /* โครงสร้างหลักหน้าจอมือถือ */
   .app-shell {
     width: 100%;
     max-width: 480px;
@@ -49,7 +47,6 @@
     .app-shell { border-left: none; border-right: none; }
   }
 
-  /* แถบด้านบนสไตล์ */
   .top-bar {
     flex-shrink: 0;
     display: flex;
@@ -67,18 +64,8 @@
     padding: 4px 10px;
     box-shadow: 0 2px 0 var(--plum);
   }
-  .brand-title {
-    font-weight: 700; font-size: 14px; color: var(--plum);
-    line-height: 1.1;
-  }
-  .room-sub {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 8px; color: #8c4a68;
-    margin-top: 2px;
-  }
-  .top-actions {
-    display: flex; align-items: center; gap: 6px;
-  }
+  .brand-title { font-weight: 700; font-size: 14px; color: var(--plum); line-height: 1.1; }
+  .room-sub { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #8c4a68; margin-top: 2px; }
   .pixel-btn {
     background: #fff; border: 2px solid var(--plum);
     border-radius: 8px; padding: 6px 10px;
@@ -88,7 +75,6 @@
   }
   .pixel-btn:active { transform: translateY(2px); box-shadow: none; }
 
-  /* โซนตู้ปลา 16-bit */
   .tank-wrapper {
     flex-shrink: 0;
     position: relative;
@@ -106,7 +92,6 @@
     cursor: pointer;
   }
 
-  /* ป้ายข้อความล่าสุดบนตู้ปลา + ปุ่มแก้ไขตู้ปลา (ตามภาพตัวอย่าง) */
   .tank-overlay-bottom {
     position: absolute;
     left: 10px; right: 10px; bottom: 8px;
@@ -144,7 +129,6 @@
   }
   .tank-edit-btn:active { transform: translateY(2px); box-shadow: none; }
 
-  /* ห้องแชทส่วนตัวด้านล่าง */
   .chat-section {
     flex: 1;
     min-height: 0;
@@ -182,17 +166,10 @@
     gap: 8px;
     scroll-behavior: smooth;
   }
-  .msg-row {
-    display: flex; flex-direction: column;
-    max-width: 78%;
-  }
+  .msg-row { display: flex; flex-direction: column; max-width: 78%; }
   .msg-row.me { align-self: flex-end; align-items: flex-end; }
   .msg-row.other { align-self: flex-start; align-items: flex-start; }
-
-  .msg-sender {
-    font-size: 10px; font-weight: 700;
-    color: #8c4a68; margin: 0 6px 2px;
-  }
+  .msg-sender { font-size: 10px; font-weight: 700; color: #8c4a68; margin: 0 6px 2px; }
   .msg-bubble {
     padding: 7px 12px;
     border: 2px solid var(--plum);
@@ -201,24 +178,11 @@
     word-break: break-word;
     box-shadow: 0 2px 0 rgba(59,23,48,0.18);
   }
-  .msg-row.me .msg-bubble {
-    background: var(--pink-soft);
-    border-bottom-right-radius: 4px;
-  }
-  .msg-row.other .msg-bubble {
-    background: var(--cream);
-    border-bottom-left-radius: 4px;
-  }
-  .msg-time {
-    font-size: 9px; color: #9e6580;
-    margin: 2px 6px 0;
-  }
-  .empty-chat {
-    text-align: center; color: #a36a84;
-    font-size: 13px; margin: auto; padding: 16px;
-  }
+  .msg-row.me .msg-bubble { background: var(--pink-soft); border-bottom-right-radius: 4px; }
+  .msg-row.other .msg-bubble { background: var(--cream); border-bottom-left-radius: 4px; }
+  .msg-time { font-size: 9px; color: #9e6580; margin: 2px 6px 0; }
+  .empty-chat { text-align: center; color: #a36a84; font-size: 13px; margin: auto; padding: 16px; }
 
-  /* แถบพิมพ์แชทด้านล่างสุด */
   .chat-input-bar {
     flex-shrink: 0;
     display: flex; align-items: center; gap: 8px;
@@ -248,7 +212,6 @@
   }
   .send-btn:active { transform: translateY(2px); box-shadow: none; }
 
-  /* หน้าต่างแก้ไขตู้ปลา & ฝังข้อความในตู้ */
   .modal-backdrop {
     position: fixed; inset: 0;
     background: rgba(59, 23, 48, 0.58);
@@ -270,12 +233,8 @@
     display: flex; justify-content: space-between; align-items: center;
   }
   .setting-group { margin-bottom: 14px; }
-  .setting-label {
-    display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;
-  }
-  .tank-msg-form {
-    display: flex; gap: 6px;
-  }
+  .setting-label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .tank-msg-form { display: flex; gap: 6px; }
   .tank-msg-input {
     flex: 1;
     border: 2px solid var(--plum);
@@ -291,11 +250,7 @@
     font-family: 'Mali', sans-serif; font-weight: 700; font-size: 13px;
     cursor: pointer; box-shadow: 0 2px 0 var(--plum);
   }
-  .tank-msg-submit:active { transform: translateY(2px); box-shadow: none; }
-
-  .freq-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
-  }
+  .freq-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .freq-btn {
     background: #fff; border: 2px solid var(--plum);
     border-radius: 8px; padding: 6px 4px;
@@ -303,7 +258,6 @@
     color: var(--plum); cursor: pointer;
   }
   .freq-btn.active { background: var(--pink); color: #fff; }
-
   .danger-btn {
     width: 100%; padding: 10px;
     background: #ffebf0; color: #c91e56;
@@ -311,44 +265,35 @@
     font-family: 'Mali', sans-serif; font-weight: 700; font-size: 13px;
     cursor: pointer;
   }
-  .danger-btn:active { background: #ffd1dc; }
-  .status-dot {
-    display: inline-block; width: 8px; height: 8px;
-    border-radius: 50%; background: #38c172; margin-right: 5px;
-  }
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #38c172; margin-right: 5px; }
 </style>
 </head>
 <body>
 
 <div class="app-shell">
-  <!-- แถบด้านบน -->
   <div class="top-bar">
     <div class="brand-card">
       <span style="font-size:20px;">💗</span>
       <div>
         <div class="brand-title">Aquarium</div>
-        <div class="room-sub" id="room-label">W&B</div>
+        <div class="room-sub" id="room-label">W♡B</div>
       </div>
     </div>
-    <div class="top-actions">
-      <button class="pixel-btn" id="btn-clear-tank" title="ล้างข้อความในตู้ปลา">🧹 ล้างตู้</button>
-    </div>
+    <button class="pixel-btn" id="btn-clear-tank">🧹 ล้างตู้</button>
   </div>
 
-  <!-- ตู้ปลา 16-bit Pixel Art -->
   <div class="tank-wrapper">
-    <canvas id="tank" width="320" height="240"></canvas>
+    <canvas id="tank" width="480" height="360"></canvas>
     <div class="tank-overlay-bottom">
       <div class="tank-pinned-msg hidden" id="pinned-bubble"></div>
       <button class="tank-edit-btn" id="btn-open-tank-modal">แก้ไขตู้ปลา</button>
     </div>
   </div>
 
-  <!-- ห้องแชทส่วนตัว (แยกจากข้อความตู้ปลา) -->
   <div class="chat-section">
     <div class="chat-header">
-      <div><span class="status-dot"></span>Aquarium</div>
-      <div class="identity-switch" title="เลือกชื่อของคุณบนเครื่องนี้">
+      <div><span class="status-dot"></span>แชทลับเฉพาะสองเรา</div>
+      <div class="identity-switch">
         <button class="id-pill" data-user="Well">Well</button>
         <button class="id-pill" data-user="Bae">Bae</button>
       </div>
@@ -365,7 +310,6 @@
   </div>
 </div>
 
-<!-- หน้าต่างแก้ไขตู้ปลา (ใส่ข้อความตู้ปลา / ตั้งความถี่ฟอง / ล้างข้อความตู้ปลา) -->
 <div class="modal-backdrop" id="tank-modal">
   <div class="modal-card">
     <div class="modal-title">
@@ -382,7 +326,7 @@
     </div>
 
     <div class="setting-group">
-      <span class="setting-label">🫧 ความถี่การลอยฟองข้อความในตู้ปลา:</span>
+      <span class="setting-label">ความถี่การลอยฟองข้อความในตู้ปลา:</span>
       <div class="freq-grid" id="freq-options">
         <button type="button" class="freq-btn" data-sec="0">ปิดฟอง (0)</button>
         <button type="button" class="freq-btn" data-sec="12">นานๆ ที (12วิ)</button>
@@ -403,43 +347,25 @@
 </div>
 
 <script>
-// 1. สร้าง PWA Icon & Manifest อัตโนมัติ
+// PWA Setup
 (function setupPWA() {
   const c = document.createElement('canvas');
   c.width = 192; c.height = 192;
   const x = c.getContext('2d');
   x.fillStyle = '#ffd1e3'; x.fillRect(0, 0, 192, 192);
   x.fillStyle = '#ff699e';
-  const heart = [
-    "0011001100",
-    "0111111110",
-    "1111111111",
-    "1111111111",
-    "0111111110",
-    "0011111100",
-    "0001111000",
-    "0000110000"
-  ];
-  heart.forEach((row, r) => {
-    [...row].forEach((ch, col) => {
-      if (ch === '1') x.fillRect(26 + col * 14, 42 + r * 14, 14, 14);
-    });
-  });
+  const heart = ["0011001100","0111111110","1111111111","1111111111","0111111110","0011111100","0001111000","0000110000"];
+  heart.forEach((row, r) => [...row].forEach((ch, col) => { if (ch === '1') x.fillRect(26 + col * 14, 42 + r * 14, 14, 14); }));
   const iconUrl = c.toDataURL('image/png');
   document.getElementById('apple-icon').href = iconUrl;
-  const manifest = {
-    name: "Sakura Tank Secret Chat",
-    short_name: "Sakura Tank",
-    start_url: location.href,
-    display: "standalone",
-    background_color: "#ffeaf2",
-    theme_color: "#ffd1e3",
+  document.getElementById('pwa-manifest').href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify({
+    name: "Sakura Tank Secret Chat", short_name: "Sakura Tank", start_url: location.href,
+    display: "standalone", background_color: "#ffeaf2", theme_color: "#ffd1e3",
     icons: [{ src: iconUrl, sizes: "192x192", type: "image/png" }]
-  };
-  document.getElementById('pwa-manifest').href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify(manifest));
+  }));
 })();
 
-// 2. เชื่อมต่อ Firebase Realtime Database
+// Firebase Setup
 const params = new URLSearchParams(location.search);
 const ROOM_ID = (params.get('room') || 'PINK-02').toUpperCase();
 document.getElementById('room-label').textContent = ROOM_ID;
@@ -448,195 +374,93 @@ const DB_BASE = `https://aquarium-a30ca-default-rtdb.asia-southeast1.firebasedat
 let currentUser = localStorage.getItem('sakura_user') || 'Well';
 let bubbleIntervalSec = parseFloat(localStorage.getItem('sakura_freq') || '6');
 
-// สลับตัวตน Well / Bae
 const idPills = document.querySelectorAll('.id-pill');
-function updateUserUI() {
-  idPills.forEach(btn => btn.classList.toggle('active', btn.dataset.user === currentUser));
-}
-idPills.forEach(btn => {
-  btn.addEventListener('click', () => {
-    currentUser = btn.dataset.user;
-    localStorage.setItem('sakura_user', currentUser);
-    updateUserUI();
-    renderChat();
-  });
-});
+function updateUserUI() { idPills.forEach(b => b.classList.toggle('active', b.dataset.user === currentUser)); }
+idPills.forEach(b => b.addEventListener('click', () => { currentUser = b.dataset.user; localStorage.setItem('sakura_user', currentUser); updateUserUI(); renderChat(); }));
 updateUserUI();
 
-// ตั้งค่าความถี่ฟอง
 const freqBtns = document.querySelectorAll('.freq-btn');
-function updateFreqUI() {
-  freqBtns.forEach(btn => btn.classList.toggle('active', parseFloat(btn.dataset.sec) === bubbleIntervalSec));
-}
-freqBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    bubbleIntervalSec = parseFloat(btn.dataset.sec);
-    localStorage.setItem('sakura_freq', bubbleIntervalSec);
-    updateFreqUI();
-  });
-});
+function updateFreqUI() { freqBtns.forEach(b => b.classList.toggle('active', parseFloat(b.dataset.sec) === bubbleIntervalSec)); }
+freqBtns.forEach(b => b.addEventListener('click', () => { bubbleIntervalSec = parseFloat(b.dataset.sec); localStorage.setItem('sakura_freq', bubbleIntervalSec); updateFreqUI(); }));
 updateFreqUI();
 
-// เปิด-ปิดหน้าต่างแก้ไขตู้ปลา
 const modal = document.getElementById('tank-modal');
 document.getElementById('btn-open-tank-modal').onclick = () => modal.classList.add('open');
 document.getElementById('btn-close-modal').onclick = () => modal.classList.remove('open');
 modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('open'); };
 
-let chatHistory = [];
-let tankMessages = [];
-let lastKnownChatCount = -1;
-let lastKnownTankHash = '';
+let chatHistory = [], tankMessages = [], lastKnownChatCount = -1, lastKnownTankHash = '';
 
 function updatePinnedTankLabel() {
   const el = document.getElementById('pinned-bubble');
-  if (!tankMessages || tankMessages.length === 0) {
-    el.classList.add('hidden');
-    el.textContent = '';
-  } else {
-    const latest = tankMessages[tankMessages.length - 1];
-    el.textContent = `${latest.sender} ${latest.text}`;
-    el.classList.remove('hidden');
-  }
+  if (!tankMessages || tankMessages.length === 0) { el.classList.add('hidden'); el.textContent = ''; }
+  else { const latest = tankMessages[tankMessages.length - 1]; el.textContent = `${latest.sender} ${latest.text}`; el.classList.remove('hidden'); }
 }
 
-// ดึงข้อมูลแบบเรียลไทม์ (แยกแชทกับข้อความตู้ปลาอิสระ)
 async function syncFirebase() {
   try {
     const res = await fetch(`${DB_BASE}.json`);
     const data = await res.json();
     if (!data) {
-      if (lastKnownChatCount === -1) {
-        document.getElementById('chat-list').innerHTML = '<div class="empty-chat">ยังไม่มีข้อความแชท เริ่มพิมพ์คุยกันได้เลย ♡</div>';
-        lastKnownChatCount = 0;
-      }
+      if (lastKnownChatCount === -1) { document.getElementById('chat-list').innerHTML = '<div class="empty-chat">ยังไม่มีข้อความแชท เริ่มพิมพ์คุยกันได้เลย ♡</div>'; lastKnownChatCount = 0; }
       return;
     }
-
-    // 1) ข้อมูลห้องแชท
     const rawChat = data.chat_history ? Object.values(data.chat_history) : [];
     rawChat.sort((a, b) => (a.ts || 0) - (b.ts || 0));
-    if (rawChat.length !== lastKnownChatCount) {
-      chatHistory = rawChat;
-      lastKnownChatCount = rawChat.length;
-      renderChat();
-    }
+    if (rawChat.length !== lastKnownChatCount) { chatHistory = rawChat; lastKnownChatCount = rawChat.length; renderChat(); }
 
-    // 2) ข้อมูลข้อความในตู้ปลา (แยกอิสระ)
     const rawTank = Array.isArray(data.tank_bubbles) ? data.tank_bubbles : [];
     const tankHash = JSON.stringify(rawTank);
     if (tankHash !== lastKnownTankHash) {
       const isAdded = lastKnownTankHash !== '' && rawTank.length > tankMessages.length;
-      tankMessages = rawTank;
-      lastKnownTankHash = tankHash;
-      updatePinnedTankLabel();
+      tankMessages = rawTank; lastKnownTankHash = tankHash; updatePinnedTankLabel();
       if (tankMessages.length === 0) activeBubbles = [];
-      if (isAdded && bubbleIntervalSec > 0) {
-        const latest = tankMessages[tankMessages.length - 1];
-        spawnBubble(`${latest.sender} ${latest.text}`);
-      }
+      if (isAdded && bubbleIntervalSec > 0) { const latest = tankMessages[tankMessages.length - 1]; spawnBubble(`${latest.sender} ${latest.text}`); }
     }
-  } catch (err) {
-    console.error('Sync error:', err);
-  }
+  } catch (err) { console.error(err); }
 }
 
 function renderChat() {
   const list = document.getElementById('chat-list');
-  if (chatHistory.length === 0) {
-    list.innerHTML = '<div class="empty-chat">ยังไม่มีข้อความแชท เริ่มพิมพ์คุยกันได้เลย ♡</div>';
-    return;
-  }
+  if (chatHistory.length === 0) { list.innerHTML = '<div class="empty-chat">ยังไม่มีข้อความแชท เริ่มพิมพ์คุยกันได้เลย ♡</div>'; return; }
   list.innerHTML = chatHistory.map(m => {
     const isMe = m.sender === currentUser;
     const timeStr = m.ts ? new Date(m.ts).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) : '';
-    return `
-      <div class="msg-row ${isMe ? 'me' : 'other'}">
-        <div class="msg-sender">${escapeHTML(m.sender || 'Well')}</div>
-        <div class="msg-bubble">${escapeHTML(m.text)}</div>
-        <div class="msg-time">${timeStr}</div>
-      </div>
-    `;
+    return `<div class="msg-row ${isMe ? 'me' : 'other'}"><div class="msg-sender">${escapeHTML(m.sender || 'Well')}</div><div class="msg-bubble">${escapeHTML(m.text)}</div><div class="msg-time">${timeStr}</div></div>`;
   }).join('');
   list.scrollTop = list.scrollHeight;
 }
 
-function escapeHTML(str) {
-  return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
-}
+function escapeHTML(str) { return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s])); }
 
-// ส่งข้อความในช่องแชทด้านล่าง (ไม่ไปปนกับตู้ปลา)
 document.getElementById('chat-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const input = document.getElementById('msg-input');
   const text = input.value.trim();
   if (!text) return;
-
   input.value = '';
   const newMsg = { sender: currentUser, text, ts: Date.now() };
-  chatHistory.push(newMsg);
-  lastKnownChatCount = chatHistory.length;
-  renderChat();
-
-  try {
-    await fetch(`${DB_BASE}/chat_history.json`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newMsg)
-    });
-  } catch (err) {
-    console.error('Chat send error:', err);
-  }
+  chatHistory.push(newMsg); lastKnownChatCount = chatHistory.length; renderChat();
+  await fetch(`${DB_BASE}/chat_history.json`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newMsg) });
 });
 
-// ใส่ข้อความสำหรับตู้ปลาโดยเฉพาะ
 document.getElementById('tank-msg-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const input = document.getElementById('tank-msg-input');
   const text = input.value.trim();
   if (!text) return;
-
-  input.value = '';
-  modal.classList.remove('open');
-
+  input.value = ''; modal.classList.remove('open');
   const newTankMsg = { sender: currentUser, text, ts: Date.now() };
   const updatedTank = [...tankMessages, newTankMsg].slice(-8);
-  tankMessages = updatedTank;
-  lastKnownTankHash = JSON.stringify(updatedTank);
-  updatePinnedTankLabel();
-
-  if (bubbleIntervalSec > 0) {
-    spawnBubble(`${newTankMsg.sender} ${newTankMsg.text}`);
-  }
-  dropFood(160, 24);
-
-  try {
-    await fetch(`${DB_BASE}/tank_bubbles.json`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedTank)
-    });
-  } catch (err) {
-    console.error('Tank msg error:', err);
-  }
+  tankMessages = updatedTank; lastKnownTankHash = JSON.stringify(updatedTank); updatePinnedTankLabel();
+  if (bubbleIntervalSec > 0) spawnBubble(`${newTankMsg.sender} ${newTankMsg.text}`);
+  dropFood(240, 30);
+  await fetch(`${DB_BASE}/tank_bubbles.json`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updatedTank) });
 });
 
-// ล้างข้อความในตู้ปลาออกให้หมด (เหลือแค่ปลา)
 async function clearTankMessages() {
-  tankMessages = [];
-  activeBubbles = [];
-  lastKnownTankHash = '[]';
-  updatePinnedTankLabel();
-  modal.classList.remove('open');
-  try {
-    await fetch(`${DB_BASE}/tank_bubbles.json`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify([])
-    });
-  } catch (err) {
-    console.error('Clear tank error:', err);
-  }
+  tankMessages = []; activeBubbles = []; lastKnownTankHash = '[]'; updatePinnedTankLabel(); modal.classList.remove('open');
+  await fetch(`${DB_BASE}/tank_bubbles.json`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify([]) });
 }
 document.getElementById('btn-clear-tank').onclick = clearTankMessages;
 document.getElementById('modal-clear-tank').onclick = clearTankMessages;
@@ -644,180 +468,172 @@ document.getElementById('modal-clear-tank').onclick = clearTankMessages;
 setInterval(syncFirebase, 1800);
 syncFirebase();
 
-// 3. ระบบวาดตู้ปลา 16-bit Pixel Art รายละเอียดสูง (มีเส้นขอบดำ)
+// ========================================================
+// 4. ระบบวาดตู้ปลาบนฉากหลัง HD Pixel Art (tank-bg.jpg)
+// ========================================================
 const canvas = document.getElementById('tank');
 const ctx = canvas.getContext('2d');
-const W = 320, H = 240;
+const W = 480, H = 360;
 
-// ฟังก์ชันวาด Sprite Pixel Art จากตารางสี
-function drawSprite(grid, palette, cx, cy, flipX = false, scale = 1) {
-  const h = grid.length;
-  const w = grid[0].length;
+// โหลดภาพฉากหลังที่ถอดมาจากรูปต้นฉบับของคุณ
+const bgImg = new Image();
+bgImg.src = 'tank-bg.jpg';
+let bgLoaded = false;
+bgImg.onload = () => { bgLoaded = true; };
+
+// วาดปลาสไตล์ 16-bit ความละเอียดสูงพร้อมแสงเงาและครีบพริ้วไหว
+function drawBettaHD(x, y, dir, t) {
   ctx.save();
-  ctx.translate(Math.round(cx), Math.round(cy));
-  if (flipX) ctx.scale(-scale, scale);
-  else ctx.scale(scale, scale);
-  const ox = -Math.floor(w / 2);
-  const oy = -Math.floor(h / 2);
-  for (let r = 0; r < h; r++) {
-    const row = grid[r];
-    for (let c = 0; c < w; c++) {
-      const ch = row[c];
-      if (ch !== '.' && palette[ch]) {
-        ctx.fillStyle = palette[ch];
-        ctx.fillRect(ox + c, oy + r, 1, 1);
-      }
-    }
-  }
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.scale(dir, 1);
+  const wave = Math.sin(t * 0.14) * 3;
+
+  // หางและครีบบน-ล่างไล่เฉดชมพู
+  ctx.fillStyle = '#2d142c';
+  ctx.beginPath();
+  ctx.moveTo(-8, -6); ctx.quadraticCurveTo(-28, -22 + wave, -32, 0 + wave);
+  ctx.quadraticCurveTo(-26, 20 + wave, -8, 7); ctx.fill();
+
+  ctx.fillStyle = '#ff85b3';
+  ctx.beginPath();
+  ctx.moveTo(-8, -5); ctx.quadraticCurveTo(-26, -19 + wave, -29, 0 + wave);
+  ctx.quadraticCurveTo(-24, 17 + wave, -8, 6); ctx.fill();
+
+  ctx.fillStyle = '#ffc2d9';
+  ctx.beginPath();
+  ctx.moveTo(-10, -2); ctx.quadraticCurveTo(-22, -10 + wave, -24, 0 + wave);
+  ctx.quadraticCurveTo(-20, 9 + wave, -10, 3); ctx.fill();
+
+  // ครีบบนและครีบล่าง
+  ctx.fillStyle = '#ff699e';
+  ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(-2, -10, 9, 5, -0.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(-2, 10, 8, 5, 0.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+  // ลำตัว
+  ctx.fillStyle = '#ff5c93';
+  ctx.beginPath(); ctx.ellipse(2, 0, 15, 8, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffb3d1';
+  ctx.beginPath(); ctx.ellipse(4, -2, 10, 3, 0, 0, Math.PI * 2); ctx.fill();
+
+  // ตา
+  ctx.fillStyle = '#2d142c'; ctx.fillRect(10, -3, 3, 3);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(10, -3, 1.5, 1.5);
   ctx.restore();
 }
 
-// พาเลตต์สีและตัวละคร 16-bit มีขอบดำตามภาพตัวอย่าง
-const PAL = {
-  'K': '#231524', // ขอบดำเข้ม
-  'W': '#ffffff', // ขาวไฮไลท์
-  'P': '#ff699e', // ชมพูหลัก
-  'L': '#ffb3d1', // ชมพูอ่อน
-  'D': '#c9386b', // ชมพูเข้มเงา
-  'O': '#ff5e3a', // ส้มปลาคาร์ป
-  'Y': '#ffe066', // เหลืองปลาเทวดา
-  'B': '#4a6b82', // ลายฟ้าเข้ม
-  'C': '#d6e6ff', // ฟ้าอ่อนหมึก
-  'S': '#8ea8d8', // เงาหมึก
-  'T': '#d9a45b', // น้ำตาลปลาปักเป้า
-  'M': '#fff1d0', // ท้องครีม
-  'R': '#ff85a2'  // ปลาดาว
-};
+function drawKoiHD(x, y, dir, t) {
+  ctx.save();
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.scale(dir, 1);
+  const wag = Math.sin(t * 0.16) * 2.5;
+  ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 2;
 
-// 1. ปลากัดสีชมพูหางพริ้ว (ตัวเอกตรงกลาง)
-const SPRITE_BETTA = [
-  "......KKKKK.............",
-  ".....KLLLLLK............",
-  "....KLLPPPLLK..KKKK.....",
-  "...KLLPPPPPLKKKLLLLK....",
-  "..KLPPPPPPPPLLLLLPPPK...",
-  ".KLPPWPPPPPPPLLLPPPPPK..",
-  ".KLPPKPPPPPPPLLPPPPPPK..",
-  ".KLPPPPPPPPPPLLPPPPPPK..",
-  "..KLPPPPPPPPLLLPPPPPPK..",
-  "...KLLPPPPPLKKKLLLLPK...",
-  "....KLLPPPLK...KKKKK....",
-  ".....KKKKKK............."
-];
+  // หาง
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.moveTo(-12, 0); ctx.lineTo(-22, -7 + wag); ctx.lineTo(-20, 7 + wag); ctx.closePath(); ctx.fill(); ctx.stroke();
 
-// 2. ปลาคาร์ปขาว-ส้ม
-const SPRITE_KOI = [
-  ".........KKKKKK........",
-  ".......KKWWWWWWKK......",
-  "..KK..KWWOOOWWWWK......",
-  ".KWWKKWWOOOOOWWKWK.....",
-  "KWWWWWWWWOOOWWWWWWK....",
-  "KWWWWWWWWWOWWWWWWWK....",
-  ".KWWKKWWWWWWWWWOWK.....",
-  "..KK..KWWWWWWOOOK......",
-  ".......KKKKKKKKK......."
-];
+  // ตัวสีขาวมุก
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.ellipse(0, 0, 14, 6.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
 
-// 3. ปลาเทวดาลายทาง
-const SPRITE_ANGEL = [
-  "........KK.........",
-  ".......KYYK........",
-  "......KYYYYK.......",
-  ".....KYYBBYYK......",
-  "....KYYYBBYYYK.....",
-  "..KKYYYYBBYYYYK....",
-  ".KYYYYYYBBYYYYYK...",
-  "..KKYYYYBBYYYYK....",
-  "....KYYYBBYYYK.....",
-  ".....KYYBBYYK......",
-  "......KYYYYK.......",
-  ".......KYYK........",
-  "........KK........."
-];
+  // ลายส้มแดงโคฮากุ
+  ctx.fillStyle = '#ff5238';
+  ctx.beginPath(); ctx.ellipse(-3, -1, 5, 3.5, 0.2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(6, -1.5, 3.5, 2.5, 0, 0, Math.PI * 2); ctx.fill();
 
-// 4. ปลาปักเป้ากลม
-const SPRITE_PUFFER = [
-  ".....KKKKKK.....",
-  "...KKTTTTTTKK...",
-  "..KTTTTTTTTTTK..",
-  ".KTTTTTTTTWTTTK.",
-  "KKTTTTTTTTKTTTTK",
-  "KTTTTTTTTTTTTTTK",
-  "KMMMMMMMMMMMMMMK",
-  ".KMMMMMMMMMMMMK.",
-  "..KKMMMMMMMMKK..",
-  "....KKKKKKKK...."
-];
+  ctx.fillStyle = '#2d142c'; ctx.fillRect(9, -2.5, 2.5, 2.5);
+  ctx.restore();
+}
 
-// 5. แมงกะพรุนสีชมพู
-const SPRITE_JELLY = [
-  "....KKKKKK....",
-  "..KKLLLLLLKK..",
-  ".KLLWLLLLLLLK.",
-  ".KLLLLLLLLLLK.",
-  ".KLLKLLLLKLLK.",
-  ".KLLLLLLLLLLK.",
-  "..KKKKKKKKKK..",
-  "...KL.KL.KL...",
-  "..KL..KL..KL..",
-  "...KL.KL..KL.."
-];
+function drawAngelHD(x, y, dir, t) {
+  ctx.save();
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.scale(dir, 1);
+  ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 2;
 
-// 6. หมึกดัมโบ้ตัวเล็ก (ลอย & ในหอย)
-const SPRITE_OCTO = [
-  "....KKKKKK....",
-  "..KKCCCCCCKK..",
-  "KKCCCCCCCCCCKK",
-  "KCCCKCCCCKCCCK",
-  ".KCCCCCCCCCCK.",
-  "..KCCCCCCCCK..",
-  ".KCCK.KK.KCCK.",
-  "KCCK......KCCK"
-];
+  ctx.fillStyle = '#e8f1f8';
+  ctx.beginPath(); ctx.moveTo(11, 0); ctx.lineTo(-4, -16); ctx.lineTo(-10, 0); ctx.lineTo(-4, 16); ctx.closePath(); ctx.fill(); ctx.stroke();
 
-// 7. ปลาดาว
-const SPRITE_STAR = [
-  ".....KK.....",
-  "....KRRK....",
-  "KKKKRRRRKKKK",
-  ".KRRRRRRRRK.",
-  "..KRRRRRRK..",
-  ".KRRK..KRRK.",
-  "KKK......KKK"
-];
+  // ลายพาดเหลือง-น้ำเงิน
+  ctx.fillStyle = '#ffe066'; ctx.fillRect(-3, -9, 3, 18);
+  ctx.fillStyle = '#4a6b82'; ctx.fillRect(2, -7, 2.5, 14);
+  ctx.fillStyle = '#2d142c'; ctx.fillRect(6, -2, 2.5, 2.5);
+  ctx.restore();
+}
+
+function drawPufferHD(x, y, dir, t) {
+  ctx.save();
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.scale(dir, 1);
+  ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 2;
+
+  ctx.fillStyle = '#d9a45b';
+  ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#fff3d6';
+  ctx.beginPath(); ctx.arc(0, 1, 9, 0.1 * Math.PI, 0.9 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#2d142c'; ctx.fillRect(5, -3, 2.5, 2.5);
+  ctx.restore();
+}
+
+function drawJellyHD(x, y, color, t) {
+  ctx.save();
+  ctx.translate(Math.round(x), Math.round(y));
+  const pulse = Math.sin(t * 0.09 + x) * 1.5;
+  ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 2;
+
+  // หนวดพลิ้ว
+  for (let i = -5; i <= 5; i += 5) {
+    ctx.beginPath();
+    ctx.moveTo(i, 4);
+    ctx.quadraticCurveTo(i + Math.sin(t * 0.1 + i) * 3, 10, i, 15);
+    ctx.stroke();
+  }
+  // หัวแมงกะพรุน
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.arc(0, 2, 10 + pulse * 0.5, Math.PI, 0); ctx.lineTo(10, 4); ctx.lineTo(-10, 4); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#2d142c';
+  ctx.fillRect(-4, -1, 2, 2); ctx.fillRect(3, -1, 2, 2);
+  ctx.restore();
+}
+
+function drawDumboOctoHD(x, y, t) {
+  ctx.save();
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 2;
+  ctx.fillStyle = '#d6e6ff';
+  // หูดัมโบ้
+  ctx.beginPath(); ctx.ellipse(-10, -3, 4, 2.5, -0.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(10, -3, 4, 2.5, 0.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // หัวกลม
+  ctx.beginPath(); ctx.arc(0, 0, 9, Math.PI, 0); ctx.lineTo(10, 7); ctx.lineTo(-10, 7); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#2d142c';
+  ctx.fillRect(-4, 0, 2, 2); ctx.fillRect(3, 0, 2, 2);
+  ctx.restore();
+}
 
 const fishes = [
-  { x: 165, y: 112, vx: 0.38, vy: 0.1, dir: -1, sprite: SPRITE_BETTA, scale: 1.4, isJelly: false },
-  { x: 115, y: 155, vx: 0.45, vy: -0.08, dir: 1, sprite: SPRITE_KOI, scale: 1.25, isJelly: false },
-  { x: 205, y: 152, vx: -0.35, vy: 0.1, dir: -1, sprite: SPRITE_ANGEL, scale: 1.25, isJelly: false },
-  { x: 252, y: 150, vx: -0.3, vy: -0.06, dir: -1, sprite: SPRITE_PUFFER, scale: 1.2, isJelly: false },
-  { x: 82, y: 82, vx: 0.18, vy: -0.15, dir: 1, sprite: SPRITE_JELLY, scale: 1.25, isJelly: true },
-  { x: 235, y: 76, vx: -0.2, vy: 0.14, dir: 1, sprite: SPRITE_OCTO, scale: 1.2, isJelly: true },
-  { x: 64, y: 138, vx: 0.16, vy: 0.12, dir: 1, sprite: SPRITE_JELLY, scale: 1.05, isJelly: true }
+  { x: 240, y: 165, vx: 0.45, vy: 0.12, dir: 1, type: 'betta' },
+  { x: 170, y: 230, vx: 0.55, vy: -0.1, dir: 1, type: 'koi' },
+  { x: 300, y: 225, vx: -0.4, vy: 0.12, dir: -1, type: 'angel' },
+  { x: 365, y: 220, vx: -0.35, vy: -0.08, dir: -1, type: 'puffer' },
+  { x: 130, y: 115, vx: 0.22, vy: -0.18, dir: 1, type: 'jelly_pink' },
+  { x: 95, y: 195, vx: 0.18, vy: 0.14, dir: 1, type: 'jelly_pink' },
+  { x: 345, y: 110, vx: -0.24, vy: 0.16, dir: -1, type: 'octo' }
 ];
 
 const petals = Array.from({ length: 16 }, () => ({
-  x: Math.random() * W,
-  y: Math.random() * 195,
-  vx: -0.18 - Math.random() * 0.2,
-  vy: 0.2 + Math.random() * 0.22,
+  x: Math.random() * W, y: Math.random() * 280,
+  vx: -0.25 - Math.random() * 0.25, vy: 0.28 + Math.random() * 0.25,
   phase: Math.random() * Math.PI * 2
 }));
 
-let foods = [];
-let activeBubbles = [];
-let bubbleTimer = 0;
-let msgCycleIndex = 0;
+let foods = [], activeBubbles = [], bubbleTimer = 0, msgCycleIndex = 0;
 
 function dropFood(x, y) {
-  const types = ['pellet', 'star_y', 'star_o', 'star_g'];
-  for (let i = 0; i < 5; i++) {
-    foods.push({
-      x: x + (Math.random() - 0.5) * 34,
-      y: y + i * 8,
-      vy: 0.38 + Math.random() * 0.2,
-      kind: types[i % types.length]
-    });
+  const colors = ['#ffe066', '#ff8c42', '#ff699e', '#6ee7b7'];
+  for (let i = 0; i < 6; i++) {
+    foods.push({ x: x + (Math.random() - 0.5) * 45, y: y + i * 10, vy: 0.5 + Math.random() * 0.25, col: colors[i % colors.length], isStar: i % 2 === 0 });
   }
 }
 
@@ -828,170 +644,68 @@ canvas.addEventListener('pointerdown', (e) => {
 
 function spawnBubble(text) {
   if (!text) return;
-  activeBubbles.push({
-    text,
-    x: 80 + Math.random() * 160,
-    y: 192,
-    vy: -0.38,
-    wobble: Math.random() * Math.PI * 2,
-    alpha: 1
-  });
+  activeBubbles.push({ text, x: 110 + Math.random() * 260, y: 280, vy: -0.45, wobble: Math.random() * Math.PI * 2, alpha: 1 });
   if (activeBubbles.length > 3) activeBubbles.shift();
 }
 
-function drawCoralBranch(x, y, mainCol, lightCol) {
-  ctx.fillStyle = '#3b1730';
-  ctx.fillRect(x - 1, y - 42, 8, 44);
-  ctx.fillRect(x - 13, y - 34, 14, 7);
-  ctx.fillRect(x - 13, y - 48, 7, 16);
-  ctx.fillRect(x + 6, y - 28, 13, 7);
-  ctx.fillRect(x + 12, y - 42, 7, 16);
-
-  ctx.fillStyle = mainCol;
-  ctx.fillRect(x, y - 41, 6, 42);
-  ctx.fillRect(x - 12, y - 33, 13, 5);
-  ctx.fillRect(x - 12, y - 47, 5, 15);
-  ctx.fillRect(x + 6, y - 27, 12, 5);
-  ctx.fillRect(x + 13, y - 41, 5, 15);
-
-  ctx.fillStyle = lightCol;
-  ctx.fillRect(x + 1, y - 40, 2, 38);
-  ctx.fillRect(x - 11, y - 46, 2, 12);
-}
-
-function drawEnvironment() {
-  // ไล่เฉดสีน้ำทะเลพาสเทล
-  const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0, '#c2ecff');
-  grad.addColorStop(0.65, '#8dd4f7');
-  grad.addColorStop(1, '#75c2eb');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, W, H);
-
-  // ขอบตู้กระจกด้านบนและด้านข้าง
-  ctx.fillStyle = 'rgba(255,255,255,0.5)';
-  ctx.fillRect(0, 0, W, 14);
-  ctx.fillStyle = '#5c4b6e';
-  ctx.fillRect(0, 0, 4, H);
-  ctx.fillRect(W - 4, 0, 4, H);
-
-  // ซุ้มประตูโทริอิซากุระ 16-bit ตรงกลาง
-  ctx.fillStyle = '#4a2540'; // ขอบเสา
-  ctx.fillRect(102, 46, 116, 9);
-  ctx.fillRect(110, 62, 100, 7);
-  ctx.fillRect(120, 52, 12, 144);
-  ctx.fillRect(188, 52, 12, 144);
-
-  ctx.fillStyle = '#c87a98'; // ตัวเสาชมพูตุ่น
-  ctx.fillRect(104, 47, 112, 7);
-  ctx.fillRect(112, 63, 96, 5);
-  ctx.fillRect(122, 53, 8, 142);
-  ctx.fillRect(190, 53, 8, 142);
-
-  ctx.fillStyle = '#e8a5be'; // ไฮไลท์เสา
-  ctx.fillRect(123, 54, 2, 138);
-  ctx.fillRect(191, 54, 2, 138);
-
-  // ปะการังซ้ายและขวา
-  drawCoralBranch(44, 196, '#e87a9e', '#ffb8d1');
-  drawCoralBranch(268, 196, '#f2a2be', '#ffd9e8');
-
-  // พื้นทรายด้านล่าง
-  ctx.fillStyle = '#e8cfa6';
-  ctx.fillRect(4, 194, W - 8, 46);
-  ctx.fillStyle = '#d4b483';
-  ctx.fillRect(4, 194, W - 8, 4);
-  ctx.fillStyle = '#f5e4c8';
-  ctx.fillRect(20, 202, 80, 4);
-  ctx.fillRect(190, 206, 90, 4);
-
-  // หอยไข่มุกตรงกลางพื้นทราย (มีขอบดำ + ไข่มุกเรืองแสง)
-  ctx.fillStyle = '#3b1730';
-  ctx.beginPath(); ctx.arc(160, 194, 20, Math.PI, 0); ctx.fill();
-  ctx.fillStyle = '#d99bc2';
-  ctx.beginPath(); ctx.arc(160, 194, 18, Math.PI, 0); ctx.fill();
-  ctx.fillStyle = '#f7d6eb';
-  ctx.beginPath(); ctx.arc(160, 194, 13, Math.PI, 0); ctx.fill();
-  // ไข่มุกสีขาว
-  ctx.fillStyle = '#ffffff';
-  ctx.beginPath(); ctx.arc(160, 189, 7, 0, Math.PI * 2); ctx.fill();
-  // ฐานหอยล่าง
-  ctx.fillStyle = '#3b1730';
-  ctx.fillRect(138, 193, 44, 7);
-  ctx.fillStyle = '#e8a5be';
-  ctx.fillRect(140, 194, 40, 5);
-
-  // หอยด้านซ้ายที่มีหมึกน้อยนอนอยู่
-  ctx.fillStyle = '#3b1730';
-  ctx.beginPath(); ctx.arc(62, 192, 18, Math.PI * 0.85, Math.PI * 0.15); ctx.fill();
-  ctx.fillStyle = '#b8d0e8';
-  ctx.beginPath(); ctx.arc(62, 192, 16, Math.PI * 0.85, Math.PI * 0.15); ctx.fill();
-  drawSprite(SPRITE_OCTO, PAL, 62, 192, false, 1.1);
-
-  // ปลาดาว 2 ตัวบนทรายด้านขวา
-  drawSprite(SPRITE_STAR, PAL, 218, 200, false, 1.35);
-  drawSprite(SPRITE_STAR, PAL, 254, 205, false, 1.45);
-}
-
-let frame = 0;
-let lastTime = performance.now();
+let frame = 0, lastTime = performance.now();
 
 function loop(now) {
   const dt = (now - lastTime) / 1000;
   lastTime = now;
   frame++;
 
-  drawEnvironment();
+  if (bgLoaded) {
+    ctx.drawImage(bgImg, 0, 0, W, H);
+  } else {
+    ctx.fillStyle = '#98dcff';
+    ctx.fillRect(0, 0, W, H);
+  }
 
-  // กลีบดอกซากุระ 16-bit ร่วง
+  // กลีบดอกซากุระร่วง
   petals.forEach(p => {
-    p.x += p.vx + Math.sin(frame * 0.03 + p.phase) * 0.18;
+    p.x += p.vx + Math.sin(frame * 0.03 + p.phase) * 0.25;
     p.y += p.vy;
-    if (p.y > 194) { p.y = 14; p.x = 12 + Math.random() * (W - 24); }
-    if (p.x < 8) p.x = W - 12;
-    const px = Math.round(p.x), py = Math.round(p.y);
-    ctx.fillStyle = '#ff9ec0';
-    ctx.fillRect(px, py, 5, 3);
-    ctx.fillStyle = '#ffe3ee';
-    ctx.fillRect(px + 1, py, 3, 2);
+    if (p.y > 285) { p.y = 18; p.x = 20 + Math.random() * (W - 40); }
+    if (p.x < 12) p.x = W - 16;
+    ctx.fillStyle = '#ffb3d1';
+    ctx.beginPath(); ctx.ellipse(Math.round(p.x), Math.round(p.y), 4, 2.5, 0.3, 0, Math.PI * 2); ctx.fill();
   });
 
   // อาหารเม็ดและอาหารรูปดาว
   foods.forEach((fd, idx) => {
     fd.y += fd.vy;
     const fx = Math.round(fd.x), fy = Math.round(fd.y);
-    ctx.fillStyle = '#3b1730';
-    ctx.fillRect(fx - 1, fy - 1, 6, 6);
-    ctx.fillStyle = fd.kind === 'star_y' ? '#ffe066' : fd.kind === 'star_g' ? '#7ae582' : '#ff8c42';
-    ctx.fillRect(fx, fy, 4, 4);
-    if (fd.y >= 194) foods.splice(idx, 1);
+    ctx.fillStyle = fd.col;
+    ctx.strokeStyle = '#2d142c'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(fx, fy, fd.isStar ? 4.5 : 3.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    if (fd.y >= 285) foods.splice(idx, 1);
   });
 
-  // อัปเดตการว่ายน้ำของปลา
+  // อัปเดตและวาดฝูงปลา
   fishes.forEach(f => {
-    if (foods.length > 0 && !f.isJelly) {
+    const isFloater = f.type.startsWith('jelly') || f.type === 'octo';
+    if (foods.length > 0 && !isFloater) {
       const target = foods[0];
-      const dx = target.x - f.x;
-      const dy = target.y - f.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist < 10) {
-        foods.shift();
-      } else {
-        f.x += (dx / dist) * 0.85;
-        f.y += (dy / dist) * 0.65;
-        f.dir = dx >= 0 ? 1 : -1;
-      }
+      const dx = target.x - f.x, dy = target.y - f.y, dist = Math.hypot(dx, dy);
+      if (dist < 14) foods.shift();
+      else { f.x += (dx / dist) * 1.1; f.y += (dy / dist) * 0.85; f.dir = dx >= 0 ? 1 : -1; }
     } else {
       f.x += f.vx;
-      f.y += f.vy + Math.sin(frame * 0.035 + f.x * 0.06) * 0.14;
-      if (f.x < 26 || f.x > W - 26) { f.vx *= -1; f.dir *= -1; }
-      if (f.y < 28 || f.y > 172) f.vy *= -1;
+      f.y += f.vy + Math.sin(frame * 0.035 + f.x * 0.05) * 0.18;
+      if (f.x < 42 || f.x > W - 42) { f.vx *= -1; f.dir *= -1; }
+      if (f.y < 42 || f.y > 255) f.vy *= -1;
     }
-    const flip = f.isJelly ? false : (f.dir < 0);
-    drawSprite(f.sprite, PAL, f.x, f.y, flip, f.scale);
+
+    if (f.type === 'betta') drawBettaHD(f.x, f.y, f.dir, frame);
+    else if (f.type === 'koi') drawKoiHD(f.x, f.y, f.dir, frame);
+    else if (f.type === 'angel') drawAngelHD(f.x, f.y, f.dir, frame);
+    else if (f.type === 'puffer') drawPufferHD(f.x, f.y, f.dir, frame);
+    else if (f.type === 'jelly_pink') drawJellyHD(f.x, f.y, '#ffb3d1', frame);
+    else if (f.type === 'octo') drawDumboOctoHD(f.x, f.y, frame);
   });
 
-  // ปล่อยฟองข้อความตามความถี่ที่เลือก
+  // ปล่อยฟองข้อความตามความถี่ที่ตั้งค่า
   if (bubbleIntervalSec > 0 && tankMessages.length > 0) {
     bubbleTimer += dt;
     if (bubbleTimer >= bubbleIntervalSec) {
@@ -1002,34 +716,28 @@ function loop(now) {
     }
   }
 
-  // วาดฟองข้อความลอยขึ้นด้านบน
   activeBubbles.forEach((b, idx) => {
     b.y += b.vy;
-    const bx = Math.round(b.x + Math.sin(frame * 0.05 + b.wobble) * 4);
+    const bx = Math.round(b.x + Math.sin(frame * 0.05 + b.wobble) * 5);
     const by = Math.round(b.y);
-    if (by < 34) b.alpha -= 0.03;
+    if (by < 45) b.alpha -= 0.03;
 
     ctx.save();
     ctx.globalAlpha = Math.max(0, b.alpha);
-    ctx.font = 'bold 10px Mali, sans-serif';
+    ctx.font = 'bold 13px Mali, sans-serif';
     const tw = ctx.measureText(b.text).width;
-    const pad = 7;
-    const boxW = Math.min(tw + pad * 2, W - 20);
-    const drawX = Math.max(10, Math.min(W - boxW - 10, bx - boxW / 2));
+    const pad = 10;
+    const boxW = Math.min(tw + pad * 2, W - 28);
+    const drawX = Math.max(14, Math.min(W - boxW - 14, bx - boxW / 2));
 
     ctx.fillStyle = 'rgba(255,255,255,0.95)';
-    ctx.strokeStyle = '#3b1730';
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.roundRect(drawX, by - 12, boxW, 20, 8);
-    ctx.fill();
-    ctx.stroke();
-
+    ctx.strokeStyle = '#3b1730'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.roundRect(drawX, by - 16, boxW, 26, 11); ctx.fill(); ctx.stroke();
     ctx.fillStyle = '#3b1730';
-    ctx.fillText(b.text, drawX + pad, by + 1, boxW - pad * 2);
+    ctx.fillText(b.text, drawX + pad, by + 2, boxW - pad * 2);
     ctx.restore();
 
-    if (b.alpha <= 0 || by < 14) activeBubbles.splice(idx, 1);
+    if (b.alpha <= 0 || by < 20) activeBubbles.splice(idx, 1);
   });
 
   requestAnimationFrame(loop);
