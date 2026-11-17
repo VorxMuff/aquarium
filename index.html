@@ -14,12 +14,12 @@
 <style>
   :root {
     --bg: #ffeaf2;
-    --panel: #fff6fa;
-    --plum: #4a1938;
+    --panel: #fff8fb;
+    --plum: #3b1730;
     --pink: #ff699e;
     --pink-dark: #d93870;
     --pink-soft: #ffd6e6;
-    --cream: #fffdfd;
+    --cream: #ffffff;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
@@ -33,55 +33,69 @@
     flex-direction: column;
   }
 
-  /* แถบด้านบน */
+  /* โครงสร้างหลักหน้าจอมือถือ */
+  .app-shell {
+    width: 100%;
+    max-width: 480px;
+    height: 100dvh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    border-left: 2px solid var(--plum);
+    border-right: 2px solid var(--plum);
+  }
+  @media (max-width: 480px) {
+    .app-shell { border-left: none; border-right: none; }
+  }
+
+  /* แถบด้านบนสไตล์ */
   .top-bar {
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 12px;
-    background: linear-gradient(180deg, #ffd6e6 0%, #ffeaf2 100%);
+    background: linear-gradient(180deg, #ffcce0 0%, #ffe6f0 100%);
     border-bottom: 3px solid var(--plum);
-    z-index: 10;
   }
-  .brand {
+  .brand-card {
     display: flex; align-items: center; gap: 8px;
+    background: #fff0f6;
+    border: 2px solid var(--plum);
+    border-radius: 8px;
+    padding: 4px 10px;
+    box-shadow: 0 2px 0 var(--plum);
   }
   .brand-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 10px; color: var(--plum);
-    line-height: 1.4;
+    font-weight: 700; font-size: 14px; color: var(--plum);
+    line-height: 1.1;
   }
-  .room-badge {
-    display: inline-block;
-    background: var(--pink); color: #fff;
+  .room-sub {
     font-family: 'Press Start 2P', monospace;
-    font-size: 8px; padding: 3px 6px;
-    border: 2px solid var(--plum);
+    font-size: 8px; color: #8c4a68;
     margin-top: 2px;
   }
   .top-actions {
     display: flex; align-items: center; gap: 6px;
   }
-  .icon-btn {
+  .pixel-btn {
     background: #fff; border: 2px solid var(--plum);
-    border-radius: 8px; padding: 5px 8px;
+    border-radius: 8px; padding: 6px 10px;
     font-family: 'Mali', sans-serif; font-weight: 700;
     font-size: 12px; color: var(--plum);
     cursor: pointer; box-shadow: 0 2px 0 var(--plum);
   }
-  .icon-btn:active { transform: translateY(2px); box-shadow: none; }
+  .pixel-btn:active { transform: translateY(2px); box-shadow: none; }
 
-  /* โซนตู้ปลาด้านบน */
-  .tank-section {
+  /* โซนตู้ปลา 16-bit */
+  .tank-wrapper {
     flex-shrink: 0;
     position: relative;
     width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
-    aspect-ratio: 5 / 3;
-    max-height: 38dvh;
-    background: #9ee0ff;
+    aspect-ratio: 4 / 3;
+    max-height: 44dvh;
+    background: #98dcff;
     border-bottom: 3px solid var(--plum);
     overflow: hidden;
   }
@@ -91,22 +105,49 @@
     image-rendering: pixelated;
     cursor: pointer;
   }
-  .tank-hint {
-    position: absolute; bottom: 6px; right: 8px;
-    background: rgba(255,255,255,0.82);
-    border: 2px solid var(--plum);
-    border-radius: 6px; padding: 2px 7px;
-    font-size: 10px; font-weight: 700;
+
+  /* ป้ายข้อความล่าสุดบนตู้ปลา + ปุ่มแก้ไขตู้ปลา (ตามภาพตัวอย่าง) */
+  .tank-overlay-bottom {
+    position: absolute;
+    left: 10px; right: 10px; bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
     pointer-events: none;
   }
+  .tank-pinned-msg {
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid var(--plum);
+    border-radius: 10px;
+    padding: 5px 11px;
+    font-size: 12px; font-weight: 700;
+    color: var(--plum);
+    box-shadow: 0 2px 0 var(--plum);
+    max-width: 62%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tank-pinned-msg.hidden { display: none; }
+  .tank-edit-btn {
+    pointer-events: auto;
+    margin-left: auto;
+    background: #f5efe6;
+    border: 2px solid var(--plum);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-family: 'Mali', sans-serif; font-weight: 700;
+    font-size: 12px; color: var(--plum);
+    cursor: pointer;
+    box-shadow: 0 2px 0 var(--plum);
+  }
+  .tank-edit-btn:active { transform: translateY(2px); box-shadow: none; }
 
-  /* โซนแชทส่วนตัวด้านล่าง */
+  /* ห้องแชทส่วนตัวด้านล่าง */
   .chat-section {
     flex: 1;
     min-height: 0;
-    width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     background: var(--panel);
@@ -120,19 +161,17 @@
     font-size: 12px; font-weight: 700;
   }
   .identity-switch {
-    display: flex; align-items: center; gap: 4px;
+    display: flex; align-items: center; gap: 3px;
     background: #fff; border: 2px solid var(--plum);
     border-radius: 20px; padding: 2px;
   }
   .id-pill {
     border: none; background: transparent;
-    padding: 3px 10px; border-radius: 16px;
+    padding: 2px 10px; border-radius: 16px;
     font-family: 'Mali', sans-serif; font-weight: 700; font-size: 12px;
     color: var(--plum); cursor: pointer;
   }
-  .id-pill.active {
-    background: var(--pink); color: #fff;
-  }
+  .id-pill.active { background: var(--pink); color: #fff; }
 
   .chat-messages {
     flex: 1;
@@ -155,12 +194,12 @@
     color: #8c4a68; margin: 0 6px 2px;
   }
   .msg-bubble {
-    padding: 8px 12px;
+    padding: 7px 12px;
     border: 2px solid var(--plum);
     border-radius: 14px;
     font-size: 14px; line-height: 1.35;
     word-break: break-word;
-    box-shadow: 0 2px 0 rgba(74,25,56,0.18);
+    box-shadow: 0 2px 0 rgba(59,23,48,0.18);
   }
   .msg-row.me .msg-bubble {
     background: var(--pink-soft);
@@ -176,10 +215,10 @@
   }
   .empty-chat {
     text-align: center; color: #a36a84;
-    font-size: 13px; margin: auto; padding: 20px;
+    font-size: 13px; margin: auto; padding: 16px;
   }
 
-  /* แถบพิมพ์ข้อความค้างด้านล่าง */
+  /* แถบพิมพ์แชทด้านล่างสุด */
   .chat-input-bar {
     flex-shrink: 0;
     display: flex; align-items: center; gap: 8px;
@@ -192,7 +231,7 @@
     flex: 1;
     border: 2px solid var(--plum);
     border-radius: 20px;
-    padding: 9px 14px;
+    padding: 8px 14px;
     font-family: 'Mali', sans-serif;
     font-size: 14px; color: var(--plum);
     background: #fff;
@@ -202,23 +241,23 @@
     background: var(--pink); color: #fff;
     border: 2px solid var(--plum);
     border-radius: 20px;
-    padding: 9px 16px;
+    padding: 8px 16px;
     font-family: 'Mali', sans-serif; font-weight: 700;
     font-size: 14px; cursor: pointer;
     box-shadow: 0 2px 0 var(--plum);
   }
   .send-btn:active { transform: translateY(2px); box-shadow: none; }
 
-  /* หน้าต่างตั้งค่าตู้ปลา */
+  /* หน้าต่างแก้ไขตู้ปลา & ฝังข้อความในตู้ */
   .modal-backdrop {
     position: fixed; inset: 0;
-    background: rgba(74, 25, 56, 0.55);
+    background: rgba(59, 23, 48, 0.58);
     display: none; align-items: center; justify-content: center;
     padding: 16px; z-index: 50;
   }
   .modal-backdrop.open { display: flex; }
   .modal-card {
-    width: 100%; max-width: 380px;
+    width: 100%; max-width: 390px;
     background: #fff6fa;
     border: 3px solid var(--plum);
     border-radius: 16px;
@@ -234,6 +273,26 @@
   .setting-label {
     display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;
   }
+  .tank-msg-form {
+    display: flex; gap: 6px;
+  }
+  .tank-msg-input {
+    flex: 1;
+    border: 2px solid var(--plum);
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-family: 'Mali', sans-serif; font-size: 13px;
+    background: #fff; color: var(--plum); outline: none;
+  }
+  .tank-msg-submit {
+    background: var(--pink); color: #fff;
+    border: 2px solid var(--plum); border-radius: 10px;
+    padding: 8px 12px;
+    font-family: 'Mali', sans-serif; font-weight: 700; font-size: 13px;
+    cursor: pointer; box-shadow: 0 2px 0 var(--plum);
+  }
+  .tank-msg-submit:active { transform: translateY(2px); box-shadow: none; }
+
   .freq-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
   }
@@ -244,6 +303,7 @@
     color: var(--plum); cursor: pointer;
   }
   .freq-btn.active { background: var(--pink); color: #fff; }
+
   .danger-btn {
     width: 100%; padding: 10px;
     background: #ffebf0; color: #c91e56;
@@ -254,37 +314,40 @@
   .danger-btn:active { background: #ffd1dc; }
   .status-dot {
     display: inline-block; width: 8px; height: 8px;
-    border-radius: 50%; background: #38c172; margin-right: 4px;
+    border-radius: 50%; background: #38c172; margin-right: 5px;
   }
 </style>
 </head>
 <body>
 
-  <!-- แถบหัวด้านบน -->
+<div class="app-shell">
+  <!-- แถบด้านบน -->
   <div class="top-bar">
-    <div class="brand">
-      <span style="font-size:20px;">🌸</span>
+    <div class="brand-card">
+      <span style="font-size:20px;">💗</span>
       <div>
         <div class="brand-title">Aquarium</div>
-        <span class="room-badge" id="room-label">W&B</span>
+        <div class="room-sub" id="room-label">W&B</div>
       </div>
     </div>
     <div class="top-actions">
-      <button class="icon-btn" id="btn-clear-tank" title="ล้างข้อความในตู้ปลา">🧹 ล้างตู้</button>
-      <button class="icon-btn" id="btn-settings" title="ตั้งค่าตู้ปลา">⚙️ ตั้งค่า</button>
+      <button class="pixel-btn" id="btn-clear-tank" title="ล้างข้อความในตู้ปลา">🧹 ล้างตู้</button>
     </div>
   </div>
 
-  <!-- ตู้ปลา 16-bit ด้านบน -->
-  <div class="tank-section">
-    <canvas id="tank" width="400" height="240"></canvas>
-    <div class="tank-hint">แตะตู้ปลาเพื่อให้อาหาร</div>
+  <!-- ตู้ปลา 16-bit Pixel Art -->
+  <div class="tank-wrapper">
+    <canvas id="tank" width="320" height="240"></canvas>
+    <div class="tank-overlay-bottom">
+      <div class="tank-pinned-msg hidden" id="pinned-bubble"></div>
+      <button class="tank-edit-btn" id="btn-open-tank-modal">แก้ไขตู้ปลา</button>
+    </div>
   </div>
 
-  <!-- ห้องแชทส่วนตัวด้านล่าง -->
+  <!-- ห้องแชทส่วนตัว (แยกจากข้อความตู้ปลา) -->
   <div class="chat-section">
     <div class="chat-header">
-      <div><span class="status-dot"></span>แชทลับเฉพาะสองเรา</div>
+      <div><span class="status-dot"></span>Aquarium</div>
       <div class="identity-switch" title="เลือกชื่อของคุณบนเครื่องนี้">
         <button class="id-pill" data-user="Well">Well</button>
         <button class="id-pill" data-user="Bae">Bae</button>
@@ -292,44 +355,52 @@
     </div>
 
     <div class="chat-messages" id="chat-list">
-      <div class="empty-chat">กำลังเชื่อมต่อตู้ปลา...</div>
+      <div class="empty-chat">กำลังเชื่อมต่อห้องลับ...</div>
     </div>
 
     <form class="chat-input-bar" id="chat-form">
-      <input type="text" class="chat-input" id="msg-input" placeholder="พิมพ์ข้อความส่งหากัน..." autocomplete="off" maxlength="120">
+      <input type="text" class="chat-input" id="msg-input" placeholder="พิมพ์ข้อความแชทหากัน..." autocomplete="off" maxlength="200">
       <button type="submit" class="send-btn">ส่ง ♡</button>
     </form>
   </div>
+</div>
 
-  <!-- หน้าต่างตั้งค่า -->
-  <div class="modal-backdrop" id="settings-modal">
-    <div class="modal-card">
-      <div class="modal-title">
-        <span>⚙️ ตั้งค่าตู้ปลา & ฟองข้อความ</span>
-        <button class="icon-btn" id="btn-close-modal">✕</button>
-      </div>
+<!-- หน้าต่างแก้ไขตู้ปลา (ใส่ข้อความตู้ปลา / ตั้งความถี่ฟอง / ล้างข้อความตู้ปลา) -->
+<div class="modal-backdrop" id="tank-modal">
+  <div class="modal-card">
+    <div class="modal-title">
+      <span>🌸 แก้ไขตู้ปลา & ข้อความในน้ำ</span>
+      <button class="pixel-btn" id="btn-close-modal">✕</button>
+    </div>
 
-      <div class="setting-group">
-        <span class="setting-label">ความถี่การลอยฟองข้อความในตู้ปลา:</span>
-        <div class="freq-grid" id="freq-options">
-          <button class="freq-btn" data-sec="0">ปิดฟอง (0)</button>
-          <button class="freq-btn" data-sec="12">นานๆ ที (12วิ)</button>
-          <button class="freq-btn" data-sec="6">ปกติ (6วิ)</button>
-          <button class="freq-btn" data-sec="3">บ่อย (3วิ)</button>
-          <button class="freq-btn" data-sec="1.5">รัวๆ (1.5วิ)</button>
-        </div>
-      </div>
+    <div class="setting-group">
+      <span class="setting-label">💌 ใส่ข้อความสำหรับลอยในตู้ปลา (แยกจากแชท):</span>
+      <form class="tank-msg-form" id="tank-msg-form">
+        <input type="text" class="tank-msg-input" id="tank-msg-input" placeholder="เช่น คิดถึงนะ ♡" maxlength="45" autocomplete="off">
+        <button type="submit" class="tank-msg-submit">ฝังในตู้</button>
+      </form>
+    </div>
 
-      <div class="setting-group">
-        <span class="setting-label">จัดการข้อความในตู้ปลา:</span>
-        <button class="danger-btn" id="modal-clear-tank">🧹 ล้างข้อความในตู้ปลาออกให้หมด (เหลือแค่ปลา)</button>
-      </div>
-
-      <div style="font-size:11px; color:#8c4a68; text-align:center;">
-        * การล้างข้อความในตู้ปลาจะทำให้ในน้ำโล่งเหลือแค่ปลา แต่ประวัติแชทด้านล่างยังคงอยู่ครบครับ
+    <div class="setting-group">
+      <span class="setting-label">🫧 ความถี่การลอยฟองข้อความในตู้ปลา:</span>
+      <div class="freq-grid" id="freq-options">
+        <button type="button" class="freq-btn" data-sec="0">ปิดฟอง (0)</button>
+        <button type="button" class="freq-btn" data-sec="12">นานๆ ที (12วิ)</button>
+        <button type="button" class="freq-btn" data-sec="6">ปกติ (6วิ)</button>
+        <button type="button" class="freq-btn" data-sec="3">บ่อย (3วิ)</button>
+        <button type="button" class="freq-btn" data-sec="1.5">รัวๆ (1.5วิ)</button>
       </div>
     </div>
+
+    <div class="setting-group" style="margin-bottom:8px;">
+      <button type="button" class="danger-btn" id="modal-clear-tank">🧹 ล้างข้อความในตู้ปลาออกหมด (เหลือแค่ปลา)</button>
+    </div>
+
+    <div style="font-size:11px; color:#8c4a68; text-align:center;">
+      * แตะที่ตัวตู้ปลาโดยตรงเพื่อโปรยอาหารเม็ดและดาวให้ปลากินได้ทันที 
+    </div>
   </div>
+</div>
 
 <script>
 // 1. สร้าง PWA Icon & Manifest อัตโนมัติ
@@ -368,22 +439,19 @@
   document.getElementById('pwa-manifest').href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify(manifest));
 })();
 
-// 2. ตั้งค่าห้องและฐานข้อมูล Firebase
+// 2. เชื่อมต่อ Firebase Realtime Database
 const params = new URLSearchParams(location.search);
 const ROOM_ID = (params.get('room') || 'PINK-02').toUpperCase();
 document.getElementById('room-label').textContent = ROOM_ID;
-
 const DB_BASE = `https://aquarium-a30ca-default-rtdb.asia-southeast1.firebasedatabase.app/sakura_tanks/${ROOM_ID}`;
 
-// จำตัวตนผู้ใช้บนเครื่องนี้
 let currentUser = localStorage.getItem('sakura_user') || 'Well';
 let bubbleIntervalSec = parseFloat(localStorage.getItem('sakura_freq') || '6');
 
+// สลับตัวตน Well / Bae
 const idPills = document.querySelectorAll('.id-pill');
 function updateUserUI() {
-  idPills.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.user === currentUser);
-  });
+  idPills.forEach(btn => btn.classList.toggle('active', btn.dataset.user === currentUser));
 }
 idPills.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -398,9 +466,7 @@ updateUserUI();
 // ตั้งค่าความถี่ฟอง
 const freqBtns = document.querySelectorAll('.freq-btn');
 function updateFreqUI() {
-  freqBtns.forEach(btn => {
-    btn.classList.toggle('active', parseFloat(btn.dataset.sec) === bubbleIntervalSec);
-  });
+  freqBtns.forEach(btn => btn.classList.toggle('active', parseFloat(btn.dataset.sec) === bubbleIntervalSec));
 }
 freqBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -411,49 +477,63 @@ freqBtns.forEach(btn => {
 });
 updateFreqUI();
 
-// Modal เปิด-ปิด
-const modal = document.getElementById('settings-modal');
-document.getElementById('btn-settings').onclick = () => modal.classList.add('open');
+// เปิด-ปิดหน้าต่างแก้ไขตู้ปลา
+const modal = document.getElementById('tank-modal');
+document.getElementById('btn-open-tank-modal').onclick = () => modal.classList.add('open');
 document.getElementById('btn-close-modal').onclick = () => modal.classList.remove('open');
 modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('open'); };
 
-// สถานะข้อมูล
 let chatHistory = [];
 let tankMessages = [];
 let lastKnownChatCount = -1;
+let lastKnownTankHash = '';
 
-// ดึงข้อมูลแบบเรียลไทม์ (Polling ทุก 1.8 วินาที)
+function updatePinnedTankLabel() {
+  const el = document.getElementById('pinned-bubble');
+  if (!tankMessages || tankMessages.length === 0) {
+    el.classList.add('hidden');
+    el.textContent = '';
+  } else {
+    const latest = tankMessages[tankMessages.length - 1];
+    el.textContent = `${latest.sender} ${latest.text}`;
+    el.classList.remove('hidden');
+  }
+}
+
+// ดึงข้อมูลแบบเรียลไทม์ (แยกแชทกับข้อความตู้ปลาอิสระ)
 async function syncFirebase() {
   try {
     const res = await fetch(`${DB_BASE}.json`);
     const data = await res.json();
     if (!data) {
       if (lastKnownChatCount === -1) {
-        document.getElementById('chat-list').innerHTML = '<div class="empty-chat">ยังไม่มีข้อความ เริ่มพิมพ์ทักทายกันได้เลย ♡</div>';
+        document.getElementById('chat-list').innerHTML = '<div class="empty-chat">ยังไม่มีข้อความแชท เริ่มพิมพ์คุยกันได้เลย ♡</div>';
         lastKnownChatCount = 0;
       }
       return;
     }
 
-    // ประวัติแชททั้งหมด
-    const rawChat = data.chat_history ? Object.values(data.chat_history) : (data.messages || []);
+    // 1) ข้อมูลห้องแชท
+    const rawChat = data.chat_history ? Object.values(data.chat_history) : [];
     rawChat.sort((a, b) => (a.ts || 0) - (b.ts || 0));
-
-    // ข้อความที่ยังโชว์ในตู้ปลา (ลบออกได้โดยไม่กระทบแชท)
-    const rawTank = data.tank_bubbles !== undefined ? (data.tank_bubbles || []) : rawChat.slice(-6);
-
-    tankMessages = rawTank;
-
     if (rawChat.length !== lastKnownChatCount) {
-      const isNewMsg = lastKnownChatCount !== -1 && rawChat.length > lastKnownChatCount;
       chatHistory = rawChat;
       lastKnownChatCount = rawChat.length;
       renderChat();
+    }
 
-      // ถ้ามีข้อความใหม่เด้งเข้ามา ให้ปล่อยฟองทันที 1 ลูก (ยกเว้นตั้งปิดฟองไว้)
-      if (isNewMsg && bubbleIntervalSec > 0 && tankMessages.length > 0) {
+    // 2) ข้อมูลข้อความในตู้ปลา (แยกอิสระ)
+    const rawTank = Array.isArray(data.tank_bubbles) ? data.tank_bubbles : [];
+    const tankHash = JSON.stringify(rawTank);
+    if (tankHash !== lastKnownTankHash) {
+      const isAdded = lastKnownTankHash !== '' && rawTank.length > tankMessages.length;
+      tankMessages = rawTank;
+      lastKnownTankHash = tankHash;
+      updatePinnedTankLabel();
+      if (tankMessages.length === 0) activeBubbles = [];
+      if (isAdded && bubbleIntervalSec > 0) {
         const latest = tankMessages[tankMessages.length - 1];
-        spawnBubble(`${latest.sender}: ${latest.text}`);
+        spawnBubble(`${latest.sender} ${latest.text}`);
       }
     }
   } catch (err) {
@@ -464,7 +544,7 @@ async function syncFirebase() {
 function renderChat() {
   const list = document.getElementById('chat-list');
   if (chatHistory.length === 0) {
-    list.innerHTML = '<div class="empty-chat">ยังไม่มีข้อความ เริ่มพิมพ์ทักทายกันได้เลย ♡</div>';
+    list.innerHTML = '<div class="empty-chat">ยังไม่มีข้อความแชท เริ่มพิมพ์คุยกันได้เลย ♡</div>';
     return;
   }
   list.innerHTML = chatHistory.map(m => {
@@ -485,7 +565,7 @@ function escapeHTML(str) {
   return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 }
 
-// ส่งข้อความใหม่
+// ส่งข้อความในช่องแชทด้านล่าง (ไม่ไปปนกับตู้ปลา)
 document.getElementById('chat-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const input = document.getElementById('msg-input');
@@ -494,33 +574,50 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
 
   input.value = '';
   const newMsg = { sender: currentUser, text, ts: Date.now() };
-
-  // อัปเดตหน้าจอทันที (Optimistic UI)
   chatHistory.push(newMsg);
   lastKnownChatCount = chatHistory.length;
   renderChat();
 
-  const updatedTank = [...tankMessages, newMsg].slice(-8);
-  tankMessages = updatedTank;
-  if (bubbleIntervalSec > 0) {
-    spawnBubble(`${newMsg.sender}: ${newMsg.text}`);
-  }
-  dropFood(200, 30);
-
-  // บันทึกลง Firebase ทั้งประวัติแชทและฟองในตู้ปลา
   try {
     await fetch(`${DB_BASE}/chat_history.json`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newMsg)
     });
+  } catch (err) {
+    console.error('Chat send error:', err);
+  }
+});
+
+// ใส่ข้อความสำหรับตู้ปลาโดยเฉพาะ
+document.getElementById('tank-msg-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const input = document.getElementById('tank-msg-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+  modal.classList.remove('open');
+
+  const newTankMsg = { sender: currentUser, text, ts: Date.now() };
+  const updatedTank = [...tankMessages, newTankMsg].slice(-8);
+  tankMessages = updatedTank;
+  lastKnownTankHash = JSON.stringify(updatedTank);
+  updatePinnedTankLabel();
+
+  if (bubbleIntervalSec > 0) {
+    spawnBubble(`${newTankMsg.sender} ${newTankMsg.text}`);
+  }
+  dropFood(160, 24);
+
+  try {
     await fetch(`${DB_BASE}/tank_bubbles.json`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedTank)
     });
   } catch (err) {
-    console.error('Send error:', err);
+    console.error('Tank msg error:', err);
   }
 });
 
@@ -528,6 +625,8 @@ document.getElementById('chat-form').addEventListener('submit', async (e) => {
 async function clearTankMessages() {
   tankMessages = [];
   activeBubbles = [];
+  lastKnownTankHash = '[]';
+  updatePinnedTankLabel();
   modal.classList.remove('open');
   try {
     await fetch(`${DB_BASE}/tank_bubbles.json`, {
@@ -545,27 +644,163 @@ document.getElementById('modal-clear-tank').onclick = clearTankMessages;
 setInterval(syncFirebase, 1800);
 syncFirebase();
 
-// ==========================================
-// 3. ระบบวาดตู้ปลา 16-bit Pixel Art (60fps)
-// ==========================================
+// 3. ระบบวาดตู้ปลา 16-bit Pixel Art รายละเอียดสูง (มีเส้นขอบดำ)
 const canvas = document.getElementById('tank');
 const ctx = canvas.getContext('2d');
-const W = 400, H = 240;
+const W = 320, H = 240;
 
-const fishes = [
-  { x: 180, y: 110, vx: 0.55, vy: 0.15, dir: 1, color: '#ff5c93', fin: '#ff9ec0', size: 1.2, type: 'betta' },
-  { x: 110, y: 155, vx: -0.65, vy: -0.1, dir: -1, color: '#ffffff', spot: '#ff5238', size: 1.0, type: 'koi' },
-  { x: 280, y: 145, vx: 0.45, vy: 0.12, dir: 1, color: '#ffe66d', stripe: '#3a506b', size: 0.95, type: 'angel' },
-  { x: 130, y: 75, vx: 0.25, vy: -0.2, dir: 1, color: '#ffb3d1', size: 0.9, type: 'jelly' },
-  { x: 270, y: 80, vx: -0.3, vy: 0.18, dir: -1, color: '#c8d8ff', size: 0.85, type: 'jelly' },
-  { x: 310, y: 165, vx: -0.4, vy: 0.05, dir: -1, color: '#e6b873', size: 0.85, type: 'puffer' }
+// ฟังก์ชันวาด Sprite Pixel Art จากตารางสี
+function drawSprite(grid, palette, cx, cy, flipX = false, scale = 1) {
+  const h = grid.length;
+  const w = grid[0].length;
+  ctx.save();
+  ctx.translate(Math.round(cx), Math.round(cy));
+  if (flipX) ctx.scale(-scale, scale);
+  else ctx.scale(scale, scale);
+  const ox = -Math.floor(w / 2);
+  const oy = -Math.floor(h / 2);
+  for (let r = 0; r < h; r++) {
+    const row = grid[r];
+    for (let c = 0; c < w; c++) {
+      const ch = row[c];
+      if (ch !== '.' && palette[ch]) {
+        ctx.fillStyle = palette[ch];
+        ctx.fillRect(ox + c, oy + r, 1, 1);
+      }
+    }
+  }
+  ctx.restore();
+}
+
+// พาเลตต์สีและตัวละคร 16-bit มีขอบดำตามภาพตัวอย่าง
+const PAL = {
+  'K': '#231524', // ขอบดำเข้ม
+  'W': '#ffffff', // ขาวไฮไลท์
+  'P': '#ff699e', // ชมพูหลัก
+  'L': '#ffb3d1', // ชมพูอ่อน
+  'D': '#c9386b', // ชมพูเข้มเงา
+  'O': '#ff5e3a', // ส้มปลาคาร์ป
+  'Y': '#ffe066', // เหลืองปลาเทวดา
+  'B': '#4a6b82', // ลายฟ้าเข้ม
+  'C': '#d6e6ff', // ฟ้าอ่อนหมึก
+  'S': '#8ea8d8', // เงาหมึก
+  'T': '#d9a45b', // น้ำตาลปลาปักเป้า
+  'M': '#fff1d0', // ท้องครีม
+  'R': '#ff85a2'  // ปลาดาว
+};
+
+// 1. ปลากัดสีชมพูหางพริ้ว (ตัวเอกตรงกลาง)
+const SPRITE_BETTA = [
+  "......KKKKK.............",
+  ".....KLLLLLK............",
+  "....KLLPPPLLK..KKKK.....",
+  "...KLLPPPPPLKKKLLLLK....",
+  "..KLPPPPPPPPLLLLLPPPK...",
+  ".KLPPWPPPPPPPLLLPPPPPK..",
+  ".KLPPKPPPPPPPLLPPPPPPK..",
+  ".KLPPPPPPPPPPLLPPPPPPK..",
+  "..KLPPPPPPPPLLLPPPPPPK..",
+  "...KLLPPPPPLKKKLLLLPK...",
+  "....KLLPPPLK...KKKKK....",
+  ".....KKKKKK............."
 ];
 
-const petals = Array.from({ length: 18 }, () => ({
+// 2. ปลาคาร์ปขาว-ส้ม
+const SPRITE_KOI = [
+  ".........KKKKKK........",
+  ".......KKWWWWWWKK......",
+  "..KK..KWWOOOWWWWK......",
+  ".KWWKKWWOOOOOWWKWK.....",
+  "KWWWWWWWWOOOWWWWWWK....",
+  "KWWWWWWWWWOWWWWWWWK....",
+  ".KWWKKWWWWWWWWWOWK.....",
+  "..KK..KWWWWWWOOOK......",
+  ".......KKKKKKKKK......."
+];
+
+// 3. ปลาเทวดาลายทาง
+const SPRITE_ANGEL = [
+  "........KK.........",
+  ".......KYYK........",
+  "......KYYYYK.......",
+  ".....KYYBBYYK......",
+  "....KYYYBBYYYK.....",
+  "..KKYYYYBBYYYYK....",
+  ".KYYYYYYBBYYYYYK...",
+  "..KKYYYYBBYYYYK....",
+  "....KYYYBBYYYK.....",
+  ".....KYYBBYYK......",
+  "......KYYYYK.......",
+  ".......KYYK........",
+  "........KK........."
+];
+
+// 4. ปลาปักเป้ากลม
+const SPRITE_PUFFER = [
+  ".....KKKKKK.....",
+  "...KKTTTTTTKK...",
+  "..KTTTTTTTTTTK..",
+  ".KTTTTTTTTWTTTK.",
+  "KKTTTTTTTTKTTTTK",
+  "KTTTTTTTTTTTTTTK",
+  "KMMMMMMMMMMMMMMK",
+  ".KMMMMMMMMMMMMK.",
+  "..KKMMMMMMMMKK..",
+  "....KKKKKKKK...."
+];
+
+// 5. แมงกะพรุนสีชมพู
+const SPRITE_JELLY = [
+  "....KKKKKK....",
+  "..KKLLLLLLKK..",
+  ".KLLWLLLLLLLK.",
+  ".KLLLLLLLLLLK.",
+  ".KLLKLLLLKLLK.",
+  ".KLLLLLLLLLLK.",
+  "..KKKKKKKKKK..",
+  "...KL.KL.KL...",
+  "..KL..KL..KL..",
+  "...KL.KL..KL.."
+];
+
+// 6. หมึกดัมโบ้ตัวเล็ก (ลอย & ในหอย)
+const SPRITE_OCTO = [
+  "....KKKKKK....",
+  "..KKCCCCCCKK..",
+  "KKCCCCCCCCCCKK",
+  "KCCCKCCCCKCCCK",
+  ".KCCCCCCCCCCK.",
+  "..KCCCCCCCCK..",
+  ".KCCK.KK.KCCK.",
+  "KCCK......KCCK"
+];
+
+// 7. ปลาดาว
+const SPRITE_STAR = [
+  ".....KK.....",
+  "....KRRK....",
+  "KKKKRRRRKKKK",
+  ".KRRRRRRRRK.",
+  "..KRRRRRRK..",
+  ".KRRK..KRRK.",
+  "KKK......KKK"
+];
+
+const fishes = [
+  { x: 165, y: 112, vx: 0.38, vy: 0.1, dir: -1, sprite: SPRITE_BETTA, scale: 1.4, isJelly: false },
+  { x: 115, y: 155, vx: 0.45, vy: -0.08, dir: 1, sprite: SPRITE_KOI, scale: 1.25, isJelly: false },
+  { x: 205, y: 152, vx: -0.35, vy: 0.1, dir: -1, sprite: SPRITE_ANGEL, scale: 1.25, isJelly: false },
+  { x: 252, y: 150, vx: -0.3, vy: -0.06, dir: -1, sprite: SPRITE_PUFFER, scale: 1.2, isJelly: false },
+  { x: 82, y: 82, vx: 0.18, vy: -0.15, dir: 1, sprite: SPRITE_JELLY, scale: 1.25, isJelly: true },
+  { x: 235, y: 76, vx: -0.2, vy: 0.14, dir: 1, sprite: SPRITE_OCTO, scale: 1.2, isJelly: true },
+  { x: 64, y: 138, vx: 0.16, vy: 0.12, dir: 1, sprite: SPRITE_JELLY, scale: 1.05, isJelly: true }
+];
+
+const petals = Array.from({ length: 16 }, () => ({
   x: Math.random() * W,
-  y: Math.random() * H,
-  vx: -0.2 - Math.random() * 0.3,
-  vy: 0.25 + Math.random() * 0.3,
+  y: Math.random() * 195,
+  vx: -0.18 - Math.random() * 0.2,
+  vy: 0.2 + Math.random() * 0.22,
   phase: Math.random() * Math.PI * 2
 }));
 
@@ -575,144 +810,127 @@ let bubbleTimer = 0;
 let msgCycleIndex = 0;
 
 function dropFood(x, y) {
-  for (let i = 0; i < 4; i++) {
+  const types = ['pellet', 'star_y', 'star_o', 'star_g'];
+  for (let i = 0; i < 5; i++) {
     foods.push({
-      x: x + (Math.random() - 0.5) * 36,
-      y: y + Math.random() * 12,
-      vy: 0.45 + Math.random() * 0.25
+      x: x + (Math.random() - 0.5) * 34,
+      y: y + i * 8,
+      vy: 0.38 + Math.random() * 0.2,
+      kind: types[i % types.length]
     });
   }
 }
 
 canvas.addEventListener('pointerdown', (e) => {
   const rect = canvas.getBoundingClientRect();
-  const scaleX = W / rect.width;
-  const scaleY = H / rect.height;
-  dropFood((e.clientX - rect.left) * scaleX, (e.clientY - rect.top) * scaleY);
+  dropFood((e.clientX - rect.left) * (W / rect.width), (e.clientY - rect.top) * (H / rect.height));
 });
 
 function spawnBubble(text) {
   if (!text) return;
   activeBubbles.push({
     text,
-    x: 90 + Math.random() * 220,
-    y: 195,
-    vy: -0.42,
+    x: 80 + Math.random() * 160,
+    y: 192,
+    vy: -0.38,
     wobble: Math.random() * Math.PI * 2,
     alpha: 1
   });
   if (activeBubbles.length > 3) activeBubbles.shift();
 }
 
-function drawBackground() {
-  // น้ำไล่เฉดพาสเทล
+function drawCoralBranch(x, y, mainCol, lightCol) {
+  ctx.fillStyle = '#3b1730';
+  ctx.fillRect(x - 1, y - 42, 8, 44);
+  ctx.fillRect(x - 13, y - 34, 14, 7);
+  ctx.fillRect(x - 13, y - 48, 7, 16);
+  ctx.fillRect(x + 6, y - 28, 13, 7);
+  ctx.fillRect(x + 12, y - 42, 7, 16);
+
+  ctx.fillStyle = mainCol;
+  ctx.fillRect(x, y - 41, 6, 42);
+  ctx.fillRect(x - 12, y - 33, 13, 5);
+  ctx.fillRect(x - 12, y - 47, 5, 15);
+  ctx.fillRect(x + 6, y - 27, 12, 5);
+  ctx.fillRect(x + 13, y - 41, 5, 15);
+
+  ctx.fillStyle = lightCol;
+  ctx.fillRect(x + 1, y - 40, 2, 38);
+  ctx.fillRect(x - 11, y - 46, 2, 12);
+}
+
+function drawEnvironment() {
+  // ไล่เฉดสีน้ำทะเลพาสเทล
   const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0, '#bce8ff');
-  grad.addColorStop(0.75, '#89cff0');
-  grad.addColorStop(1, '#6bb9e0');
+  grad.addColorStop(0, '#c2ecff');
+  grad.addColorStop(0.65, '#8dd4f7');
+  grad.addColorStop(1, '#75c2eb');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, W, H);
 
-  // ผิวน้ำด้านบน
-  ctx.fillStyle = 'rgba(255,255,255,0.45)';
-  ctx.fillRect(0, 12, W, 6);
+  // ขอบตู้กระจกด้านบนและด้านข้าง
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillRect(0, 0, W, 14);
+  ctx.fillStyle = '#5c4b6e';
+  ctx.fillRect(0, 0, 4, H);
+  ctx.fillRect(W - 4, 0, 4, H);
 
-  // ซุ้มประตูโทริอิซากุระตรงกลาง
-  ctx.fillStyle = '#d47a96';
-  ctx.fillRect(145, 58, 110, 8);
-  ctx.fillRect(152, 74, 96, 6);
-  ctx.fillRect(162, 62, 10, 135);
-  ctx.fillRect(228, 62, 10, 135);
-  ctx.fillStyle = '#a8526e';
-  ctx.fillRect(142, 55, 116, 4);
+  // ซุ้มประตูโทริอิซากุระ 16-bit ตรงกลาง
+  ctx.fillStyle = '#4a2540'; // ขอบเสา
+  ctx.fillRect(102, 46, 116, 9);
+  ctx.fillRect(110, 62, 100, 7);
+  ctx.fillRect(120, 52, 12, 144);
+  ctx.fillRect(188, 52, 12, 144);
 
-  // ปะการังซ้าย-ขวา
-  ctx.fillStyle = '#ff8fb3';
-  ctx.fillRect(42, 130, 8, 65);
-  ctx.fillRect(30, 145, 14, 6);
-  ctx.fillRect(30, 130, 6, 18);
-  ctx.fillRect(50, 150, 14, 6);
-  ctx.fillRect(58, 135, 6, 18);
+  ctx.fillStyle = '#c87a98'; // ตัวเสาชมพูตุ่น
+  ctx.fillRect(104, 47, 112, 7);
+  ctx.fillRect(112, 63, 96, 5);
+  ctx.fillRect(122, 53, 8, 142);
+  ctx.fillRect(190, 53, 8, 142);
 
-  ctx.fillStyle = '#ffb8d0';
-  ctx.fillRect(340, 135, 8, 60);
-  ctx.fillRect(328, 150, 14, 6);
-  ctx.fillRect(328, 136, 6, 16);
-  ctx.fillRect(348, 144, 12, 6);
+  ctx.fillStyle = '#e8a5be'; // ไฮไลท์เสา
+  ctx.fillRect(123, 54, 2, 138);
+  ctx.fillRect(191, 54, 2, 138);
+
+  // ปะการังซ้ายและขวา
+  drawCoralBranch(44, 196, '#e87a9e', '#ffb8d1');
+  drawCoralBranch(268, 196, '#f2a2be', '#ffd9e8');
 
   // พื้นทรายด้านล่าง
-  ctx.fillStyle = '#f5deb3';
-  ctx.fillRect(0, 192, W, 48);
-  ctx.fillStyle = '#e6c68e';
-  ctx.fillRect(0, 192, W, 4);
+  ctx.fillStyle = '#e8cfa6';
+  ctx.fillRect(4, 194, W - 8, 46);
+  ctx.fillStyle = '#d4b483';
+  ctx.fillRect(4, 194, W - 8, 4);
+  ctx.fillStyle = '#f5e4c8';
+  ctx.fillRect(20, 202, 80, 4);
+  ctx.fillRect(190, 206, 90, 4);
 
-  // หอยไข่มุกตรงกลางพื้นทราย
-  ctx.fillStyle = '#e39ff6';
-  ctx.beginPath(); ctx.arc(200, 192, 16, Math.PI, 0); ctx.fill();
-  ctx.fillStyle = '#fff';
-  ctx.beginPath(); ctx.arc(200, 188, 6, 0, Math.PI * 2); ctx.fill();
+  // หอยไข่มุกตรงกลางพื้นทราย (มีขอบดำ + ไข่มุกเรืองแสง)
+  ctx.fillStyle = '#3b1730';
+  ctx.beginPath(); ctx.arc(160, 194, 20, Math.PI, 0); ctx.fill();
+  ctx.fillStyle = '#d99bc2';
+  ctx.beginPath(); ctx.arc(160, 194, 18, Math.PI, 0); ctx.fill();
+  ctx.fillStyle = '#f7d6eb';
+  ctx.beginPath(); ctx.arc(160, 194, 13, Math.PI, 0); ctx.fill();
+  // ไข่มุกสีขาว
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.arc(160, 189, 7, 0, Math.PI * 2); ctx.fill();
+  // ฐานหอยล่าง
+  ctx.fillStyle = '#3b1730';
+  ctx.fillRect(138, 193, 44, 7);
+  ctx.fillStyle = '#e8a5be';
+  ctx.fillRect(140, 194, 40, 5);
 
-  // ปลาดาว
-  ctx.fillStyle = '#ff85a2';
-  ctx.fillRect(285, 204, 14, 4);
-  ctx.fillRect(290, 199, 4, 14);
-}
+  // หอยด้านซ้ายที่มีหมึกน้อยนอนอยู่
+  ctx.fillStyle = '#3b1730';
+  ctx.beginPath(); ctx.arc(62, 192, 18, Math.PI * 0.85, Math.PI * 0.15); ctx.fill();
+  ctx.fillStyle = '#b8d0e8';
+  ctx.beginPath(); ctx.arc(62, 192, 16, Math.PI * 0.85, Math.PI * 0.15); ctx.fill();
+  drawSprite(SPRITE_OCTO, PAL, 62, 192, false, 1.1);
 
-function drawFish(f, t) {
-  ctx.save();
-  ctx.translate(Math.round(f.x), Math.round(f.y));
-  if (f.type !== 'jelly') ctx.scale(f.dir * f.size, f.size);
-  else ctx.scale(f.size, f.size);
-
-  const wag = Math.sin(t * 0.12 + f.x) * 2;
-
-  if (f.type === 'betta') {
-    ctx.fillStyle = f.fin;
-    ctx.fillRect(-18, -8 + wag, 10, 16);
-    ctx.fillRect(-6, -12, 10, 6);
-    ctx.fillRect(-4, 6, 8, 6);
-    ctx.fillStyle = f.color;
-    ctx.fillRect(-10, -6, 18, 12);
-    ctx.fillStyle = '#222';
-    ctx.fillRect(4, -3, 2, 2);
-  } else if (f.type === 'koi') {
-    ctx.fillStyle = f.color;
-    ctx.fillRect(-16, -4 + wag * 0.6, 6, 8);
-    ctx.fillRect(-10, -5, 18, 10);
-    ctx.fillStyle = f.spot;
-    ctx.fillRect(-4, -5, 6, 5);
-    ctx.fillRect(2, 0, 5, 4);
-    ctx.fillStyle = '#222';
-    ctx.fillRect(4, -2, 2, 2);
-  } else if (f.type === 'angel') {
-    ctx.fillStyle = f.color;
-    ctx.beginPath();
-    ctx.moveTo(8, 0); ctx.lineTo(-6, -12); ctx.lineTo(-10, 0); ctx.lineTo(-6, 12);
-    ctx.closePath(); ctx.fill();
-    ctx.fillStyle = f.stripe;
-    ctx.fillRect(-3, -7, 2, 14);
-    ctx.fillStyle = '#222';
-    ctx.fillRect(3, -2, 2, 2);
-  } else if (f.type === 'jelly') {
-    const pulse = Math.sin(t * 0.08 + f.x) * 1.5;
-    ctx.fillStyle = f.color;
-    ctx.fillRect(-8 - pulse * 0.5, -6, 16 + pulse, 9);
-    ctx.fillRect(-6, -8, 12, 3);
-    ctx.fillRect(-5, 3, 2, 7 + wag * 0.5);
-    ctx.fillRect(0, 3, 2, 8 - wag * 0.5);
-    ctx.fillRect(4, 3, 2, 7 + wag * 0.5);
-    ctx.fillStyle = '#333';
-    ctx.fillRect(-3, -2, 2, 2);
-    ctx.fillRect(2, -2, 2, 2);
-  } else if (f.type === 'puffer') {
-    ctx.fillStyle = f.color;
-    ctx.fillRect(-8, -7, 16, 14);
-    ctx.fillStyle = '#fff5d6';
-    ctx.fillRect(-6, 1, 12, 6);
-    ctx.fillStyle = '#222';
-    ctx.fillRect(4, -3, 2, 2);
-  }
-  ctx.restore();
+  // ปลาดาว 2 ตัวบนทรายด้านขวา
+  drawSprite(SPRITE_STAR, PAL, 218, 200, false, 1.35);
+  drawSprite(SPRITE_STAR, PAL, 254, 205, false, 1.45);
 }
 
 let frame = 0;
@@ -723,30 +941,35 @@ function loop(now) {
   lastTime = now;
   frame++;
 
-  drawBackground();
+  drawEnvironment();
 
-  // กลีบซากุระร่วง
-  ctx.fillStyle = '#ffd1e3';
+  // กลีบดอกซากุระ 16-bit ร่วง
   petals.forEach(p => {
-    p.x += p.vx + Math.sin(frame * 0.03 + p.phase) * 0.2;
+    p.x += p.vx + Math.sin(frame * 0.03 + p.phase) * 0.18;
     p.y += p.vy;
-    if (p.y > 192) { p.y = 10; p.x = Math.random() * W; }
-    if (p.x < 0) p.x = W;
-    ctx.fillRect(Math.round(p.x), Math.round(p.y), 4, 3);
+    if (p.y > 194) { p.y = 14; p.x = 12 + Math.random() * (W - 24); }
+    if (p.x < 8) p.x = W - 12;
+    const px = Math.round(p.x), py = Math.round(p.y);
+    ctx.fillStyle = '#ff9ec0';
+    ctx.fillRect(px, py, 5, 3);
+    ctx.fillStyle = '#ffe3ee';
+    ctx.fillRect(px + 1, py, 3, 2);
   });
 
-  // อาหารปลา
+  // อาหารเม็ดและอาหารรูปดาว
   foods.forEach((fd, idx) => {
     fd.y += fd.vy;
-    ctx.fillStyle = '#ff7b00';
-    ctx.fillRect(Math.round(fd.x), Math.round(fd.y), 3, 3);
-    if (fd.y >= 192) foods.splice(idx, 1);
+    const fx = Math.round(fd.x), fy = Math.round(fd.y);
+    ctx.fillStyle = '#3b1730';
+    ctx.fillRect(fx - 1, fy - 1, 6, 6);
+    ctx.fillStyle = fd.kind === 'star_y' ? '#ffe066' : fd.kind === 'star_g' ? '#7ae582' : '#ff8c42';
+    ctx.fillRect(fx, fy, 4, 4);
+    if (fd.y >= 194) foods.splice(idx, 1);
   });
 
-  // อัปเดตปลา
+  // อัปเดตการว่ายน้ำของปลา
   fishes.forEach(f => {
-    // ถ้ามีอาหารให้ว่ายเข้าหาอาหารที่ใกล้สุด
-    if (foods.length > 0 && f.type !== 'jelly') {
+    if (foods.length > 0 && !f.isJelly) {
       const target = foods[0];
       const dx = target.x - f.x;
       const dy = target.y - f.y;
@@ -754,58 +977,59 @@ function loop(now) {
       if (dist < 10) {
         foods.shift();
       } else {
-        f.x += (dx / dist) * 1.1;
-        f.y += (dy / dist) * 0.8;
+        f.x += (dx / dist) * 0.85;
+        f.y += (dy / dist) * 0.65;
         f.dir = dx >= 0 ? 1 : -1;
       }
     } else {
       f.x += f.vx;
-      f.y += f.vy + Math.sin(frame * 0.03 + f.x * 0.05) * 0.12;
-      if (f.x < 28 || f.x > W - 28) { f.vx *= -1; f.dir *= -1; }
-      if (f.y < 32 || f.y > 175) f.vy *= -1;
+      f.y += f.vy + Math.sin(frame * 0.035 + f.x * 0.06) * 0.14;
+      if (f.x < 26 || f.x > W - 26) { f.vx *= -1; f.dir *= -1; }
+      if (f.y < 28 || f.y > 172) f.vy *= -1;
     }
-    drawFish(f, frame);
+    const flip = f.isJelly ? false : (f.dir < 0);
+    drawSprite(f.sprite, PAL, f.x, f.y, flip, f.scale);
   });
 
-  // ตัวจับเวลาปล่อยฟองข้อความตามความถี่ที่ตั้งไว้
+  // ปล่อยฟองข้อความตามความถี่ที่เลือก
   if (bubbleIntervalSec > 0 && tankMessages.length > 0) {
     bubbleTimer += dt;
     if (bubbleTimer >= bubbleIntervalSec) {
       bubbleTimer = 0;
       const m = tankMessages[msgCycleIndex % tankMessages.length];
       msgCycleIndex++;
-      spawnBubble(`${m.sender}: ${m.text}`);
+      spawnBubble(`${m.sender} ${m.text}`);
     }
   }
 
   // วาดฟองข้อความลอยขึ้นด้านบน
   activeBubbles.forEach((b, idx) => {
     b.y += b.vy;
-    const bx = Math.round(b.x + Math.sin(frame * 0.05 + b.wobble) * 5);
+    const bx = Math.round(b.x + Math.sin(frame * 0.05 + b.wobble) * 4);
     const by = Math.round(b.y);
-    if (by < 35) b.alpha -= 0.03;
+    if (by < 34) b.alpha -= 0.03;
 
     ctx.save();
     ctx.globalAlpha = Math.max(0, b.alpha);
-    ctx.font = 'bold 11px Mali, sans-serif';
+    ctx.font = 'bold 10px Mali, sans-serif';
     const tw = ctx.measureText(b.text).width;
-    const pad = 8;
+    const pad = 7;
     const boxW = Math.min(tw + pad * 2, W - 20);
     const drawX = Math.max(10, Math.min(W - boxW - 10, bx - boxW / 2));
 
-    ctx.fillStyle = '#ffffff';
-    ctx.strokeStyle = '#4a1938';
-    ctx.lineWidth = 2;
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    ctx.strokeStyle = '#3b1730';
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.roundRect(drawX, by - 14, boxW, 22, 10);
+    ctx.roundRect(drawX, by - 12, boxW, 20, 8);
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = '#d93870';
+    ctx.fillStyle = '#3b1730';
     ctx.fillText(b.text, drawX + pad, by + 1, boxW - pad * 2);
     ctx.restore();
 
-    if (b.alpha <= 0 || by < 15) activeBubbles.splice(idx, 1);
+    if (b.alpha <= 0 || by < 14) activeBubbles.splice(idx, 1);
   });
 
   requestAnimationFrame(loop);
