@@ -47,7 +47,7 @@
         .px-icon {
             shape-rendering: crispEdges;
         }
-        /* ตัวอักษรตัวเขียน */
+        /* ตัวอักษรตัวเขียนน่ารักๆ คมชัด (ไม่แตกเป็นพิกเซล) */
         .cute-floating-msg {
             position: absolute;
             transform: translate(-50%, -50%);
@@ -74,7 +74,7 @@
 </head>
 <body class="relative flex flex-col items-center justify-center w-full h-full">
 
-    <!-- แถบสถานะด้านบน (ซ่อนอัตโนมัติในโหมด iScreen) -->
+    <!-- แถบสถานะด้านบน (ซ่อนอัตโนมัติในโหมดเต็มจอ/วิดเจ็ต) -->
     <header id="top-hud" class="absolute top-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
         <div class="plum-panel rounded-2xl px-3 py-1.5 flex items-center gap-2 pointer-events-auto">
             <svg class="px-icon w-4 h-4 shrink-0" viewBox="0 0 12 12">
@@ -109,7 +109,7 @@
         </div>
     </header>
 
-    <!-- ปุ่มออกจากโหมด iScreen Widget มุมขวาบน -->
+    <!-- ปุ่มออกจากโหมดไร้ปุ่ม มุมขวาบน -->
     <button id="exit-widget-btn" onclick="toggleWidgetMode(false)" class="hidden absolute top-2.5 right-2.5 z-30 bg-[#4a1938]/55 hover:bg-[#4a1938]/80 text-[#fff5fa] text-[11px] font-bold px-2.5 py-1 rounded-xl backdrop-blur-sm">
         แก้ไขตู้ปลา
     </button>
@@ -133,7 +133,7 @@
         </button>
 
         <button onclick="toggleWidgetMode(true)" class="plum-btn bg-[#ffd1e3] hover:bg-[#ffbdd6] text-[#4a1938] font-bold text-xs sm:text-sm px-4 py-2 rounded-2xl flex items-center gap-2 pointer-events-auto">
-            <span>📱 โหมด iScreen</span>
+            <span>📱 โหมดเต็มจอ</span>
         </button>
     </footer>
 
@@ -187,11 +187,11 @@
         </div>
     </div>
 
-    <!-- Modal 2: แชร์กับเพื่อน 2 คน & ลิงก์สำหรับ iScreen -->
+    <!-- Modal 2: แชร์กับเพื่อน 2 คน & ลิงก์สำหรับ Hermit / วิดเจ็ต -->
     <div id="shareModal" class="hidden fixed inset-0 z-40 bg-[#4a1938]/55 backdrop-blur-xs flex items-center justify-center p-4">
         <div class="plum-panel rounded-3xl w-full max-w-md p-4 sm:p-5 flex flex-col gap-3.5">
             <div class="flex items-center justify-between border-b-2 border-[#4a1938]/15 pb-2.5">
-                <h2 class="text-base sm:text-lg font-bold text-[#4a1938]">💞 แชร์ตู้ปลา 2 คน & iScreen</h2>
+                <h2 class="text-base sm:text-lg font-bold text-[#4a1938]">💞 แชร์ตู้ปลา 2 คน & Hermit</h2>
                 <button onclick="closeModal('shareModal')" class="text-xs font-bold bg-[#ffe0ee] text-[#9c275d] px-3 py-1 rounded-xl border border-[#4a1938]/25">ปิด</button>
             </div>
 
@@ -210,19 +210,19 @@
 
             <div class="flex flex-col gap-2">
                 <button onclick="copyShareLink(false)" class="plum-btn w-full bg-[#ff66a3] text-white font-bold text-xs sm:text-sm py-2.5 rounded-2xl">
-                    🔗 คัดลอกลิงก์ตู้ปลาส่งให้เพื่อน / แฟน
+                    🔗 คัดลอกลิงก์ตู้ปลาส่งให้ Well / Bae
                 </button>
                 <button onclick="copyShareLink(true)" class="plum-btn w-full bg-[#ffd1e3] text-[#4a1938] font-bold text-xs sm:text-sm py-2.5 rounded-2xl">
-                    📱 คัดลอกลิงก์สำหรับฝังในแอป iScreen (ไร้ปุ่มกวนใจ)
+                    📱 คัดลอกลิงก์สำหรับฝังใน Hermit / วิดเจ็ต (ไร้ปุ่มกวนใจ)
                 </button>
             </div>
 
             <div class="bg-[#fff7fb] p-3 rounded-2xl border border-[#f5a3c7] text-[11px] sm:text-xs text-[#4a1938] leading-relaxed">
-                <p class="font-bold mb-1">🌸 วิธีใส่วิดเจ็ตตู้ปลาบนหน้าจอโฮมผ่านแอป iScreen:</p>
+                <p class="font-bold mb-1">🌸 วิธีใส่ตู้ปลาบนหน้าจอโฮมผ่านแอป Hermit (Android):</p>
                 <ol class="list-decimal list-inside space-y-0.5">
-                    <li>กดปุ่ม <b>"คัดลอกลิงก์สำหรับฝังในแอป iScreen"</b> ด้านบน</li>
-                    <li>เปิดแอป <b>iScreen</b> เลือกสร้างวิดเจ็ตเว็บ (Web Widget / DIY)</li>
-                    <li>วางลิงก์ที่คัดลอกไว้ แล้วนำวิดเจ็ตไปวางบนหน้าจอโฮมได้เลย!</li>
+                    <li>กดปุ่ม <b>"คัดลอกลิงก์สำหรับฝังใน Hermit / วิดเจ็ต"</b> ด้านบน</li>
+                    <li>เปิดแอป <b>Hermit</b> แตะ <b>+</b> วางลิงก์แล้วกด <b>Create</b></li>
+                    <li>เลือก <b>Add to Home Screen</b> หรือวางวิดเจ็ต <b>Hermit</b> บนหน้าจอโฮมได้เลย!</li>
                 </ol>
             </div>
         </div>
@@ -816,7 +816,7 @@
                 "....PPWWWWCCCCPP......",
                 "..PPWWCCssCCCCCCPP....",
                 ".PWWCCCCssCCCCMMCCPP..",
-                "PWPWCCCCCCCCCCMMCCssP.",
+                "PWPWCCCCCCCCMMCCssP.",
                 "PWBBCCCCCCCCCCCCCCssP.",
                 ".PCCCCCCCCGGGGCCCCPP..",
                 "..PPCCCCCCGGGGCCPP....",
@@ -1972,14 +1972,14 @@
             document.execCommand('copy');
             document.body.removeChild(tempInput);
 
-            showToast(forWidget ? 'คัดลอกลิงก์สำหรับวางในแอป iScreen แล้ว!' : 'คัดลอกลิงก์ตู้ปลาแล้ว ส่งให้คนพิเศษได้เลย!');
+            showToast(forWidget ? 'คัดลอกลิงก์สำหรับ Hermit / วิดเจ็ตแล้ว!' : 'คัดลอกลิงก์ตู้ปลาแล้ว ส่งให้ Well / Bae ได้เลย!');
         };
 
         window.toggleWidgetMode = function (enable, notify = true) {
             document.getElementById('top-hud').classList.toggle('hidden', enable);
             document.getElementById('bottom-hud').classList.toggle('hidden', enable);
             document.getElementById('exit-widget-btn').classList.toggle('hidden', !enable);
-            if (enable && notify) showToast('เข้าสู่โหมด iScreen Clean (แตะมุมขวาบนเพื่อออก)');
+            if (enable && notify) showToast('เข้าสู่โหมดเต็มจอ (แตะมุมขวาบนเพื่อแก้ไข)');
             resizeCanvas();
         };
 
